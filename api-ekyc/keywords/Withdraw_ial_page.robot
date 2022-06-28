@@ -22,9 +22,9 @@ ${PATH_JAR}            tcrb-ekyc-partner-1.8.jar
 
 ***Keywords***
 withdraw_bio
-    [Arguments]     ${input_cidid}           
+    [Arguments]     ${input_cid_hash}           
     Connect To Database     psycopg2     ${DBName}    ${DBUser}    ${DBPass}    ${DBHost}    ${DBPort}
-    Execute Sql String      UPDATE kyc_db.kyc_transaction SET ial_level='' WHERE cid_hash='${input_cidid}' And ial_level='2.3'
+    Execute Sql String      UPDATE kyc_db.kyc_transaction SET ial_level='' WHERE cid_hash='${input_cid_hash}' And ial_level='2.3'
     Disconnect From Database
 
 
@@ -34,5 +34,12 @@ Gen_cid_hash
     Run Process     java   -jar     ${PATH_JAR}     hash      ${cid}             file     file      alias=myproc
     ${TextFileContent}          Get File           hashing.txt
     Set global variable         ${GET_CID_HASH}           ${TextFileContent}
+
+
+
+Process_withDraw_bio
+    [Arguments]     ${cid}
+    Gen_cid_hash    ${cid}
+    withdraw_bio    ${GET_CID_HASH} 
 
 
