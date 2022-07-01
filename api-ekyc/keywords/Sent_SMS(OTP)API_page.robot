@@ -12,8 +12,8 @@ Resource        ../keywords/Validate_customer_API_page.robot
 *** Keywords ***
 
 Sent_OTP
-    Set To Dictionary       ${HEADER_OTP}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_OTP}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
 
@@ -23,7 +23,7 @@ Sent_OTP
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
 
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${response}
     # Should Be Equal As Strings	          ${response.json()["data"]["send_otp_result"]}           ${RESPONSE_SEND_OTP_TESULT}
     # Set global variable                   ${RESPONSE_MESSAGE_SENTOTP}          ${response.json()["status"]["message"]}
@@ -62,14 +62,14 @@ Sent_OTP
 
 Sent_OTP_Check_Maximum_times
     ${body}=        To Json         {"kyc_trans_id" : "${TRANS_ID}", "language" : "TH" , "mobile_no" : "0800000003"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    data=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    data=${body}
     Request Should Be Successful        response=${response}
     Should Be Equal As Integers         ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_OTP_RESEND_MAX_TIME}   
     Log to console      ${response.json()["status"]["code"]}
 
 Sent_OTP_Error5times
     ${body}=        To Json         {"kyc_trans_id" : "${TRANS_ID}", "language" : "TH" , "mobile_no" : "0812345678"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${response}
     Should Be Equal As Integers         ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}   
     # Should Be Equal                     ${response.json()["status"]["message"]}              ${RESPONSE_MESSAGE_SUCCESS}
@@ -80,7 +80,7 @@ Sent_OTP_Error5times
 
 Sent_OTP_Mobile_Not_Found
     ${body}=        To Json         {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "0800000001", "language" : "TH"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Should Be Equal As Integers         ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_NOT_FOUND}   
     Should Be Equal                     ${response.json()["status"]["message"]}              ${RESPONSE_MESSAGE_1003}
     # Should Be Equal                     ${response.json()["data"]["send_top_result"]}        ${RESPONSE_CODE_FAIL}
@@ -92,7 +92,7 @@ Sent_OTP_Invalid_Number_3_times
     ...             {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "${MOBILE_NO}", "language" : "TH"}
     ...             {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "${MOBILE_NO}", "language" : "TH"} 
         ${body}=        To Json         ${tel-number}
-        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${body}
+        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
         Should Be Equal As Integers         ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_NOT_FOUND}   
         Should Be Equal                     ${response.json()["status"]["message"]}              ${RESPONSE_MESSAGE_1003}
         # Should Be Equal                     ${response.json()["data"]["send_top_result"]}        ${RESPONSE_CODE_FAIL}
@@ -108,7 +108,7 @@ Sent_OTP_5_times
     ...             {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "0800000003", "language" : "TH"}
     ...             {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "0800000003", "language" : "TH"}
         ${body}=        To Json         ${tel-number}
-        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${body}
+        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
         Should Be Equal As Integers         ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}   
         # Should Be Equal                     ${response.json()["status"]["message"]}              ${RESPONSE_MESSAGE_1003}
         # Should Be Equal                     ${response.json()["data"]["send_top_result"]}        ${RESPONSE_CODE_FAIL}
@@ -122,7 +122,7 @@ Sent_OTP_Invalid_Request_5_times
         ...        {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "${MOBILE_NO}", "language" : "TH" }
         ...        {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "${MOBILE_NO}", "language" : "TH" }
         ...        {"kyc_trans_id" : "${TRANS_ID}", "mobile_no" : "${MOBILE_NO}", "language" : "TH" }
-        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_OTP}    json=${tel-number}
+        ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${tel-number}
         # Request Should Be Successful        response=${response}
         Log     ${response.json()["status"]["code"]}
         Log     ${response.json()["status"]["message"]}
@@ -136,7 +136,7 @@ Sent_OTP_Invalid_Request_5_times
 
 Sent_OTP_Invalid_Send_Otp_Blank_Field_Mobile_No
     ${body}=   To Json   {"kyc_trans_id":"${TRANS_ID} ","mobile_no":"","language":"TH"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}     headers=&{HEADER_OTP}     json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}     headers=&{HEADER_PLATFORM_KYC}     json=${body}
     Should Be Equal As Integers     ${response.json()["status"]["code"]}            ${RESPONSE_CODE_INVALID_PARAM}
     Should Be Equal                 ${response.json()["status"]["message"]}         ${RESPONSE_MESSAGE_INVALID_PARAM}
     Should Be Equal                 ${response.json()["status"]["remark"]}          ${RESPONSE_REMARK_INVALID_PARAM_SEND_OTP_BLANK_FIELD_MOBILE_NO} 
@@ -145,7 +145,7 @@ Sent_OTP_Invalid_Send_Otp_Blank_Field_Mobile_No
 
 Sent_OTP_Invalid_Send_Otp_Blank_Field_Trans_ID
     ${body}=        To Json      {"kyc_trans_id":"","mobile_no":"${MOBILE_NO}","language":"TH"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}     headers=&{HEADER_OTP}     json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_SEND_OTP}     headers=&{HEADER_PLATFORM_KYC}     json=${body}
     Should Be Equal As Integers     ${response.json()["status"]["code"]}            ${RESPONSE_CODE_INVALID_PARAM}
     Should Be Equal                 ${response.json()["status"]["message"]}         ${RESPONSE_MESSAGE_INVALID_PARAM}
     Should Be Equal                 ${response.json()["status"]["remark"]}          ${RESPONSE_REMARK_INVALID_PARAM_SEND_OTP_BLANK_FIELD_TRANS_ID} 

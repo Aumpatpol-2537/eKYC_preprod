@@ -7,11 +7,11 @@ Resource            ../Keywords/Encrypt_page.robot
 *** Keywords ***
     
 Get_term_and_conditions
-    Set To Dictionary       ${HEADER_GET_TERM}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_TERM}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
-    ${response}=    GET On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_GET_TERM}
+    ${response}=    GET On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_PLATFORM_KYC}
     # Request Should Be Successful       response=${response}
     #  Log                 ${response.content}
     # Should Be Equal As Integers        ${response.json()["status"]["code"]}                ${RESPONSE_CODE_SUCCESS}
@@ -34,8 +34,8 @@ Get_term_and_conditions
 
 
 Disagree_term_and_conditions
-    Set To Dictionary       ${HEADER_GET_TERM}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_TERM}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
     Create_File_Keep_Text                                    { "kyc_trans_id" : "${TRANS_ID}", "accept" : false }
@@ -44,7 +44,7 @@ Disagree_term_and_conditions
 
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_GET_TERM}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
 
     Set global variable                     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
     Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
@@ -57,8 +57,8 @@ Disagree_term_and_conditions
 
 
 Agree_term_and_conditions
-    Set To Dictionary       ${HEADER_GET_TERM}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_TERM}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
     Create_File_Keep_Text                                    { "kyc_trans_id" : "${TRANS_ID}", "accept" : true }
@@ -67,7 +67,7 @@ Agree_term_and_conditions
 
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_GET_TERM}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
     # Should Be Equal As Integers        ${response.json()["status"]["code"]}                ${RESPONSE_CODE_SUCCESS}
     # Should Be Equal                    ${response.json()["status"]["message"]}             ${RESPONSE_MESSAGE_SUCCESS}
     # Set global variable                 ${GETTERM_RESPONES_MESSAGE}                      ${response.json()["status"]["message"]}
@@ -82,8 +82,8 @@ Agree_term_and_conditions
 
 
 Actions_term_and_conditions
-    Set To Dictionary       ${HEADER_GET_TERM}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_TERM}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
     Create_File_Keep_Text                                    { "kyc_trans_id" : "${TRANS_ID}", "accept" : ${GET_TERM} }
@@ -92,7 +92,7 @@ Actions_term_and_conditions
 
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_GET_TERM}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_TERM_AND_CONDITION}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
 
     Set global variable                     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
     Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}

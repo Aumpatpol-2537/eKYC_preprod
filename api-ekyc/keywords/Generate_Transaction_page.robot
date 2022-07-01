@@ -7,8 +7,8 @@ Resource            ../Varriable/varriable.robot
 
 ***Keywords***
 Start_Generate_Transaction
-    Set To Dictionary       ${HEADER_GENERATE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GENERATE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -17,7 +17,7 @@ Start_Generate_Transaction
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_GENERATE}   headers=&{HEADER_GENERATE}    json=${body}      expected_status=anything
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_GENERATE}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     # Set global variable             ${TRANS_ID}            ${response.json()["data"]["kyc_transaction"]}
 
     Set global variable                     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}

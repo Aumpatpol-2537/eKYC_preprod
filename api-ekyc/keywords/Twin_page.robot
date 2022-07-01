@@ -13,8 +13,8 @@ Resource            ../Varriable/varriable.robot
 
 ***Keywords***
 Have_Twin_Male
-    Set To Dictionary       ${HEADER_TWIN}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_TWIN}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
     Create Session          alias=${ALIAS}      url=${URL_CORE_SERVICE} 
 
     # [Arguments]                             ${row_in_excel}
@@ -26,7 +26,7 @@ Have_Twin_Male
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
-    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_TWIN}    json=${body}      expected_status=anything
+    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     # Request Should Be Successful    response=${response}
     Run keyword if       '${response.status_code}' != '200'         Save_error_When_its_active          TWIN            
 
@@ -62,8 +62,8 @@ Have_Twin_Male
 
 
 Have_Twin_Female
-    Set To Dictionary       ${HEADER_TWIN}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_TWIN}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
     Create Session          alias=${ALIAS}      url=${URL_CORE_SERVICE} 
 
     # [Arguments]                             ${row_in_excel}
@@ -75,7 +75,7 @@ Have_Twin_Female
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
-    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_TWIN}    json=${body}      expected_status=anything
+    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     # Request Should Be Successful    response=${response}
     Run keyword if       '${response.status_code}' != '200'         Save_error_When_its_active          TWIN            
 
@@ -109,8 +109,8 @@ Have_Twin_Female
 	# Set global variable             ${TRANS_ID}        ${values_code[0]}
 
 Dont_Have_Twin
-    Set To Dictionary       ${HEADER_TWIN}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_TWIN}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
     Create Session          alias=${ALIAS}      url=${URL_CORE_SERVICE} 
 
     Create_File_Keep_Text                                  {"kyc_trans_id" : "${TRANS_ID}","twins_status": "false","twins_gender": ""}
@@ -119,7 +119,7 @@ Dont_Have_Twin
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
-    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_TWIN}    json=${body}      expected_status=anything
+    ${response}=    PUT On Session     alias=${ALIAS}     url=${URI_TWIN}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     # Request Should Be Successful    response=${response}
     Run keyword if       '${response.status_code}' != '200'         Save_error_When_its_active          TWIN            
 

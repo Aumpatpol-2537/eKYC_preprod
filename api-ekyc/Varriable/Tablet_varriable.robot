@@ -8,6 +8,9 @@ ${ALIAS}                            eKYC
 ${USER_HEADER}                      automate
 ${CORRELATION}                      QA
 ${X-API}                            es59o179ie
+${IP}                               192.168.1.1
+${LOCATION}                         QA_HOME
+
 
 &{HEADER_GET_TERM}          X-Correlation-Id=123456789         partner-code=TCRB-TABLET     user=${USER_HEADER}       #Content-Type=application/json         
 
@@ -52,6 +55,9 @@ ${X-API}                            es59o179ie
 
 &{HEADER_COUNTER_SERVICE}               X-Correlation-Id=${CORRELATION}            Content-Type=application/json
 ...                            partner-code=CSERV       partner-secret=xxxxx      x-apigw-api-id=${X-API}      #user=${USER_HEADER}  
+
+&{HEADER_PLATFORM_KYC}          X-Correlation-Id=${CORRELATION}            client-ip=${IP}          location=${LOCATION}
+...                            partner-code=TCRB-TABLET            user=${USER_HEADER}  
 
 
 ${URI_GET_TERM_AND_CONDITION}           tcrb-platform-kyc/v1/termandcondition

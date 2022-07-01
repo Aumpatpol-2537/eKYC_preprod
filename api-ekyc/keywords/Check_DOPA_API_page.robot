@@ -10,8 +10,8 @@ Resource            ../Keywords/Get_status_error.robot
 
 *** Keywords ***
 Check_DOPA
-    Set To Dictionary       ${HEADER_CHECK_DOPA}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_CHECK_DOPA}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -21,7 +21,7 @@ Check_DOPA
 
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}   headers=&{HEADER_CHECK_DOPA}    json=${body}     expected_status=anything
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}   headers=&{HEADER_PLATFORM_KYC}    json=${body}     expected_status=anything
     # Request Should Be Successful    response=${response}
     # Run keyword if       '${response.status_code}' != '200'         Save_error_When_its_active          DOPA              
 
@@ -47,12 +47,12 @@ Check_DOPA
     # Retry_if_dopa_offline
     
 Check_DOPA_Card_Not_Found_Laser_Code
-    Set To Dictionary       ${HEADER_CHECK_DOPA}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_CHECK_DOPA}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
     ${body}=        To Json         {"kyc_trans_id": "${TRANS_ID}", "laser": "JT2095eeeeee"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}      headers=&{HEADER_CHECK_DOPA}      json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}      headers=&{HEADER_PLATFORM_KYC}      json=${body}
     Should Be Equal As Integers     ${response.json()["status"]["code"]}             ${RESPONSE_CODE_DOPA_FAIL} 
     Should Be Equal                 ${response.json()["status"]["message"]}          ${RESPONSE_MESSAGE_2006_2}
     # Should Be Equal                 ${response.json()["status"]["remark"]}           ${RESPONSE_REMARK_NULL}
@@ -64,15 +64,15 @@ Check_DOPA_Card_Not_Found_Laser_Code
     Set global variable     ${DOPA_REMARK}         ${response.json()["status"]["remark"]}             
 
 Check_DOPA_Fail
-    Set To Dictionary       ${HEADER_CHECK_DOPA}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_CHECK_DOPA}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
     Create_File_Keep_Text                                   {"kyc_trans_id":"${TRANS_ID}","laser" : "XXXXXXXXXXXX"}
     Encrypt_page.Encrypt_Function_with_long_Text            keep_text.txt      
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}   headers=&{HEADER_CHECK_DOPA}    json=${body}     expected_status=anything
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_CHECK_DOPA}   headers=&{HEADER_PLATFORM_KYC}    json=${body}     expected_status=anything
 
 
 Retry_if_dopa_offline

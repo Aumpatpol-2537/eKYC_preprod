@@ -8,8 +8,8 @@ Resource            ../Keywords/Get_status_error.robot
 
 *** Keywords ***
 Liveness_and_FR_Pass
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -20,7 +20,7 @@ Liveness_and_FR_Pass
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${resp}=        POST On Session      alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}        expected_status=anything
+    ${resp}=        POST On Session      alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}        expected_status=anything
     Log             ${resp.status_code}
     Run keyword if       '${resp.status_code}' != '200'         Save_error_When_its_active          FACIAL              
 
@@ -43,8 +43,8 @@ Liveness_and_FR_Pass
     # Set global variable             ${LN_FR_RESPONE_MESSAGE}                     ${resp.json()["status"]["message"]}
 
 Liveness_fail
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -53,7 +53,7 @@ Liveness_fail
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}     expected_status=anything 
+    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}     expected_status=anything 
     # Request Should Be Successful    response=${resp}
 
     Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}
@@ -66,14 +66,10 @@ Liveness_fail
     ${values_code}          	    Get Value From Json	                   ${convert_result}	                 $..message
 	Set global variable             ${LN_RETURN_MESSAGE_FAILS}             ${values_code[0]}
 
-    # Should Be Equal As Integers     ${resp.json()["status"]["code"]}             ${RESPONSE_CODE_LIVENESS_DETECT_FAILED}
-    # Should Be Equal                 ${resp.json()["status"]["message"]}          ${RESPONSE_MESSAGE_2009}
-    # Set Global Variable            ${LN_RETURN_MESSAGE_FAILS}                           ${resp.json()["status"]["message"]}
-    # Should Be Equal    ${resp.json()["data"]["liveness_score"]}                  ${RESPONSE_LIVENESS_SCORE}
 
 Liveness_fail_2
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -82,7 +78,7 @@ Liveness_fail_2
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
 
     Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}
     Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
@@ -94,16 +90,9 @@ Liveness_fail_2
     ${values_code}          	    Get Value From Json	                   ${convert_result}	                 $..message
 	Set global variable             ${LN_RETURN_MESSAGE_FAILS_2}             ${values_code[0]}
 
-
-    # Request Should Be Successful    response=${resp}
-    # Should Be Equal As Integers     ${resp.json()["status"]["code"]}             ${RESPONSE_CODE_LIVENESS_DETECT_FAILED}
-    # Should Be Equal                 ${resp.json()["status"]["message"]}          ${RESPONSE_MESSAGE_2009}
-    # Set Global Variable            ${LN_RETURN_MESSAGE_FAILS_2}                           ${resp.json()["status"]["message"]}
-    # Should Be Equal    ${resp.json()["data"]["liveness_score"]}                  ${RESPONSE_LIVENESS_SCORE}
-
 Liveness_fail_3
     ${body}=        To Json         {"image_source":"${LN_LOW_SCORE}","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     Should Be Equal As Integers     ${resp.json()["status"]["code"]}             ${RESPONSE_CODE_LIVENESS_DETECT_FAILED}
     Should Be Equal                 ${resp.json()["status"]["message"]}          ${RESPONSE_MESSAGE_2009}
@@ -121,13 +110,13 @@ Liveness_fail_3times
     # END
 
 Liveness_Timeout
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json              {"image_source":"livenesstimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
@@ -136,7 +125,7 @@ Liveness_Timeout
 
 Liveness_Timeout_2
     ${body}=        To Json              {"image_source":"livenesstimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
@@ -144,7 +133,7 @@ Liveness_Timeout_2
 
 Liveness_Timeout_3
     ${body}=        To Json              {"image_source":"livenesstimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session        alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
@@ -157,7 +146,7 @@ Liveness_Timeout3times
     # ...                          {"image_source":"livenesstimeout","kyc_trans_id" : "${TRANS_ID}"}
     # ...                          {"image_source":"livenesstimeout","kyc_trans_id" : "${TRANS_ID}"}
     # ${body}=     To Json   ${Liveness_TimeOut} 
-    # ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    # ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     # Request Should Be Successful    response=${resp}
     # Set global variable              ${RESULT_LIVENESS}                                 ${resp.json()["status"]["code"]}
     # Set global variable              ${RESULT_MESSAGE}                                  ${resp.json()["status"]["message"]}  
@@ -172,8 +161,8 @@ Liveness_Timeout3times
     # END
 
 LN_reached_max
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -183,7 +172,7 @@ LN_reached_max
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
 
     Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}
@@ -205,13 +194,13 @@ LN_reached_max
     # Set global variable             ${LN_FR_RESPONE_MESSAGE}                     ${resp.json()["status"]["message"]}
 
 LN_timeOut_reached_max
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json         {"image_source":"success","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session    alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     Should Be Equal As Integers     ${resp.json()["status"]["code"]}             2016 
     # Should Be Equal                 ${resp.json()["status"]["message"]}          ${RESPONSE_MESSAGE_2008}
@@ -243,8 +232,8 @@ Return_Error_Trans_Fail
 
 
 Liveness_and_FR_Pass_BU_Journey
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -255,7 +244,7 @@ Liveness_and_FR_Pass_BU_Journey
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${resp}=        POST On Session      alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}        expected_status=anything
+    ${resp}=        POST On Session      alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}        expected_status=anything
     Log             ${resp.status_code}
 
     Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}

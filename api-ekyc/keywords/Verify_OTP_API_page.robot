@@ -16,8 +16,8 @@ ${VALUE_VALID}          999999
 
 *** Keywords ***
 Verify_OTP
-    Set To Dictionary       ${HEADER_OTP}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_OTP}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -26,7 +26,7 @@ Verify_OTP
     Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
     ${body}=        To Json          {"data": "${RESULT_ENCRYPT_DATA}"}
     
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VERIFY_OTP}    headers=&{HEADER_OTP}    json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VERIFY_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${response}
 
     Set global variable            ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
@@ -51,8 +51,8 @@ Verify_OTP
     # Set Global Variable         ${RESULT_OTP_STATUS}        ${response.json()["status"]["message"]} 
 
 Verify_OTP_Value_not_match
-    Set To Dictionary       ${HEADER_OTP}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_OTP}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -63,7 +63,7 @@ Verify_OTP_Value_not_match
 
     # Encrypt_page.Encrypt_Function        {\\"kyc_trans_id\\":\\"${TRANS_ID}\\",\\"otp_value\\":\\"111111\\",\\"otp_ref\\":\\"${OTP_REF_NUMBER}\\"}
     ${body}=        To Json          {"data": "${RESULT_ENCRYPT_DATA}"}
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VERIFY_OTP}    headers=&{HEADER_OTP}    json=${body}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VERIFY_OTP}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     # Request Should Be Successful    response=${response}
 
     Set global variable            ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}

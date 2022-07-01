@@ -4,11 +4,11 @@ Library             Collections
 
 *** Keywords ***
 Get_consent
-    Set To Dictionary       ${HEADER_GET_CONSENT}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_CONSENT}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
-    ${response}=    GET On Session     alias=${ALIAS}      url=${URI_GET_CONSENT}      headers=&{HEADER_GET_CONSENT}
+    ${response}=    GET On Session     alias=${ALIAS}      url=${URI_GET_CONSENT}      headers=&{HEADER_PLATFORM_KYC}
     # Request Should Be Successful    response=${response}
     # Should Be Equal As Integers     ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}
 
@@ -30,8 +30,8 @@ Get_consent
 
 
 Disagree_Consent
-    Set To Dictionary       ${HEADER_GET_CONSENT}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_CONSENT}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -42,7 +42,7 @@ Disagree_Consent
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
     # ${body}=        To Json         { "kyc_trans_id" : "${TRANS_ID}", "accept" : false }
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_GET_CONSENT}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
     # Should Be Equal As Integers     ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}
     # Set global variable             ${CONSENT_MESSAGE}         ${response.json()["status"]["message"]}             
 
@@ -56,8 +56,8 @@ Disagree_Consent
     Run Keyword if       '${values_code[0]}' == 'Success'         Set global variable             ${CONSENT_MESSAGE}      Disagree
 
 Agree_Consent
-    Set To Dictionary       ${HEADER_GET_CONSENT}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_CONSENT}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -68,7 +68,7 @@ Agree_Consent
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
     # ${body}=        To Json         { "kyc_trans_id" : "${TRANS_ID}", "accept" : false }
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_GET_CONSENT}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
     # Should Be Equal As Integers     ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}
     # Set global variable             ${CONSENT_MESSAGE}         ${response.json()["status"]["message"]}             
 
@@ -81,8 +81,8 @@ Agree_Consent
 
 
 Actions_Consent
-    Set To Dictionary       ${HEADER_GET_CONSENT}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_GET_CONSENT}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -93,7 +93,7 @@ Actions_Consent
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
     # ${body}=        To Json         { "kyc_trans_id" : "${TRANS_ID}", "accept" : false }
-    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_GET_CONSENT}          json=${body}
+    ${response}=    POST On Session        alias=${ALIAS}          url=${URI_GET_CONSENT}      headers=&{HEADER_PLATFORM_KYC}          json=${body}
     # Should Be Equal As Integers     ${response.json()["status"]["code"]}                 ${RESPONSE_CODE_SUCCESS}
     # Set global variable             ${CONSENT_MESSAGE}         ${response.json()["status"]["message"]}             
 
