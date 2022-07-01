@@ -29,7 +29,7 @@ Resource        ../keywords/QR_code_page.robot
 
 ***Variables***
 ${SHEET_NAME_BU}        eKYC-HAPPY
-${FILE_BU_NAME}         ../eKYC_preprod/api-ekyc/Report_BU/DOPA Down_R1.xlsx
+${FILE_BU_NAME}         ../eKYC_preprod/api-ekyc/Report_BU/2022-06-28-15_PM.xlsx
 
 ${DBHost}         tcrb-bot-pprd-db.cluster-cnu8aurcdwzj.ap-southeast-1.rds.amazonaws.com
 ${DBName}         bot_v2
