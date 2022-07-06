@@ -27,6 +27,7 @@ Resource		../Main/Main.robot
 # Suite Setup			Start Project
 # Suite Teardown		Stop Project
 Suite Setup         Generate_Partner_Secret
+Suite Teardown      Log to console   ${TRANS_ID}
 
 
 # robot  -t    Sign_up_Counter_Service_1        api-ekyc/Test\ case/23.Counter_service.robot 
