@@ -14,7 +14,7 @@ ${DBName}         bot_v2
 ${DBPass}         RDBtxjPqaOmrasU4uNi2
 ${DBPort}         5432
 ${DBUser}         postgres
-${PATH_JAR}       tcrb-ekyc-partner-1.8.jar
+${PATH_JAR_PARTNER}       tcrb-ekyc-partner-1.8.jar
 
 
 ***Keywords***
@@ -27,9 +27,16 @@ Check_temp_lock
     Disconnect From Database
 
 
+Set_Facial_temp_lock
+    [Arguments]     ${input_cid_hash}           
+    Connect To Database     psycopg2     ${DBName}    ${DBUser}    ${DBPass}    ${DBHost}    ${DBPort}
+    Execute Sql String     UPDATE image_db.customer_facial_lock SET temporary_lock=true WHERE cid_hash='${input_cid_hash}'
+    Disconnect From Database
+
+
 Gen_cid_hash
     [Arguments]         ${cid}
-    Run Process     java   -jar     ${PATH_JAR}     hash      ${cid}             file     file      alias=myproc
+    Run Process     java   -jar     ${PATH_JAR_PARTNER}     hash      ${cid}    file    file      alias=myproc
     ${TextFileContent}          Get File           hashing.txt
     Set global variable         ${GET_CID_HASH}           ${TextFileContent}
 
@@ -51,3 +58,9 @@ Process_unlock_permanance_Lock
     [Arguments]     ${cid}
     Gen_cid_hash                    ${cid}
     Unlock_permanance_lock          ${GET_CID_HASH}
+
+
+Process_Set_Facial_temp_lock
+    [Arguments]     ${cid}
+    Gen_cid_hash                    ${cid}
+    Set_Facial_temp_lock                   ${GET_CID_HASH}

@@ -173,7 +173,7 @@ QR_Stamp_used_1
 
 QR_Stamp_used_2
     [Documentation]     ทดสอบระบบ Stamp QR Used กรณีลูกค้า นำ QR code ที่ทำรายการ kyc สำเร็จแล้ว (สถานะ success) และ กลับมาทำ KYC อีกครั้ง
-    [Tags]  QR_Stamp_Used
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
@@ -181,6 +181,7 @@ QR_Stamp_used_2
     Validate_customer_API_page.Validate_customer_pass              4
     Check_DOPA_API_page.Check_DOPA          
     LivenessAPI_page.Liveness_and_FR_Pass
+    	Check_ial_is_2_3                        ${TRANS_ID}    
     # Run Keyword And Ignore Error                        QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
     # [Teardown]      Run Keyword And Ignore Error        save_data_excel_page.Save_Result_Stamp_Used        4
 
@@ -266,7 +267,7 @@ QR_Stamp_used_9
 
 Modify_Validate_customer_1
     [Documentation]     ทดสอบระบบ Modify validate customer API กรณี ลูกค้า Gen QR code ด้วย เลขบัตรประชาชนของคนอื่น และมา dipchip ด้วยบัตรประชาชนของตนเอง
-    [Tags]              Modify_Validate_customer
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
@@ -275,7 +276,7 @@ Modify_Validate_customer_1
     [Teardown]      Run Keyword And Ignore Error        save_data_excel_page.Save_Result_Modify_validate_api        3
 
 Modify_Validate_customer_2
-    [Tags]              Modify_Validate_customer
+    [Tags]      Regression
     [Documentation]     ทดสอบระบบ Modify validate customer API กรณี ลูกค้า Gen QR code และ Dipchip ด้วยบัตรประชาชนคนเดียวกัน
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project

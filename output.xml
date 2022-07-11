@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.2 (Python 3.9.1 on darwin)" generated="20220705 09:49:55.294" rpa="false">
-<suite id="s1" name="23.Counter service" source="/Users/patcharapol/Documents/GitHub/eKYC_preprod/api-ekyc/Test case/23.Counter_service.robot">
+<robot generator="Robot 3.2.2 (Python 3.9.1 on darwin)" generated="20220711 21:50:30.012" rpa="false">
+<suite id="s1" name="18.Api-Integrate-Mobile" source="/Users/patcharapol/Documents/GitHub/eKYC_preprod/api-ekyc/Test case/18.api-integrate-mobile.robot">
 <kw name="Generate_Partner_Secret" library="Generate_Partner_Secret_page" type="setup">
 <kw name="Run Process" library="Process">
 <doc>Runs a process and waits for it to complete.</doc>
@@ -15,11 +15,11 @@
 <arg>file</arg>
 <arg>alias=myproc</arg>
 </arguments>
-<msg timestamp="20220705 09:49:56.157" level="INFO">Starting process:
+<msg timestamp="20220711 21:50:30.571" level="INFO">Starting process:
 java -jar tcrb-ekyc-partner-1.8.jar TCMB partner-secret preprod file file</msg>
-<msg timestamp="20220705 09:49:56.165" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20220705 09:49:56.859" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20220705 09:49:56.156" endtime="20220705 09:49:56.859"></status>
+<msg timestamp="20220711 21:50:30.576" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20220711 21:50:30.748" level="INFO">Process completed.</msg>
+<status status="PASS" starttime="20220711 21:50:30.570" endtime="20220711 21:50:30.748"></status>
 </kw>
 <kw name="Get File" library="OperatingSystem">
 <doc>Returns the contents of a specified file.</doc>
@@ -29,9 +29,9 @@ java -jar tcrb-ekyc-partner-1.8.jar TCMB partner-secret preprod file file</msg>
 <assign>
 <var>${TextFileContent}</var>
 </assign>
-<msg timestamp="20220705 09:49:56.861" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220705 09:49:56.861" level="INFO">${TextFileContent} = TTPeS8j1ghnwjYcWzvSH3sy3c2/7O+5/c4pOTg1x9wDKndyCf7PPOswjC7M/8Vr8XcKZvo/64LwACtrRkUzYj6Jjr9Q8gTD+uu/MyCCtoi9YkP2Ep9r6af/sG6vR2M8LwRBBuvi0pVn/QTQ1QEKkeXcnOPlelosNpvP+60ree4uYiZsRQQEwkVAp6AFO6zyS8SUIG5gW...</msg>
-<status status="PASS" starttime="20220705 09:49:56.860" endtime="20220705 09:49:56.861"></status>
+<msg timestamp="20220711 21:50:30.749" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20220711 21:50:30.749" level="INFO">${TextFileContent} = AW3oQwpisIy6laWdlvBHF+fJqZLqN7QUjOBKfII9oayByF5CLg5ptDGZ8+9l8uJ+Q6kXahIgdLLMMozak5CHAdgFWp6ihP2aMkBnSFWUss8mnmUT2zEq9En3Pn6PP51NULKhMJpqWcDRu2M/TW3t3vQc3A/CggLftYq3seC4adxowO07g3MCihSONFfQB3oEXVR9T8qG...</msg>
+<status status="PASS" starttime="20220711 21:50:30.749" endtime="20220711 21:50:30.749"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -39,291 +39,132 @@ java -jar tcrb-ekyc-partner-1.8.jar TCMB partner-secret preprod file file</msg>
 <arg>${GET_PARTNER_SECRET}</arg>
 <arg>${TextFileContent}</arg>
 </arguments>
-<msg timestamp="20220705 09:49:56.864" level="INFO">${GET_PARTNER_SECRET} = TTPeS8j1ghnwjYcWzvSH3sy3c2/7O+5/c4pOTg1x9wDKndyCf7PPOswjC7M/8Vr8XcKZvo/64LwACtrRkUzYj6Jjr9Q8gTD+uu/MyCCtoi9YkP2Ep9r6af/sG6vR2M8LwRBBuvi0pVn/QTQ1QEKkeXcnOPlelosNpvP+60ree4uYiZsRQQEwkVAp6AFO6zyS8SUIG5gW...</msg>
-<status status="PASS" starttime="20220705 09:49:56.862" endtime="20220705 09:49:56.864"></status>
+<msg timestamp="20220711 21:50:30.752" level="INFO">${GET_PARTNER_SECRET} = AW3oQwpisIy6laWdlvBHF+fJqZLqN7QUjOBKfII9oayByF5CLg5ptDGZ8+9l8uJ+Q6kXahIgdLLMMozak5CHAdgFWp6ihP2aMkBnSFWUss8mnmUT2zEq9En3Pn6PP51NULKhMJpqWcDRu2M/TW3t3vQc3A/CggLftYq3seC4adxowO07g3MCihSONFfQB3oEXVR9T8qG...</msg>
+<status status="PASS" starttime="20220711 21:50:30.750" endtime="20220711 21:50:30.753"></status>
 </kw>
-<status status="PASS" starttime="20220705 09:49:56.156" endtime="20220705 09:49:56.865"></status>
+<status status="PASS" starttime="20220711 21:50:30.569" endtime="20220711 21:50:30.753"></status>
 </kw>
-<test id="s1-t1" name="Sign_up_Counter_Service_1">
-<kw name="Generate_QR_Code_for_test_qrstamp_scene" library="QR_code_page">
-<kw name="Set To Dictionary" library="Collections">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<test id="s1-t1" name="Test_Check_Last_Version_9">
+<kw name="Process_Set_Facial_temp_lock" library="Connect_database_page">
 <arguments>
-<arg>${HEADER_GEN_QR}</arg>
-<arg>partner-secret=${GET_PARTNER_SECRET}</arg>
+<arg>1100600292875</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:49:56.867" endtime="20220705 09:49:56.867"></status>
-</kw>
-<kw name="Create Session" library="RequestsLibrary">
-<doc>Create Session: create a HTTP session to a server</doc>
+<kw name="Gen_cid_hash" library="Connect_database_page">
 <arguments>
-<arg>alias=${ALIAS}</arg>
-<arg>url=${BOT_CORE_SERVICE}</arg>
+<arg>${cid}</arg>
 </arguments>
-<msg timestamp="20220705 09:49:56.868" level="INFO">Creating Session using : alias=eKYC, url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220705 09:49:56.867" endtime="20220705 09:49:56.869"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>cid=${CID_AUM}</arg>
-<arg>twins_status=</arg>
-<arg>twins_gender=</arg>
-<arg>journey_code=JN003</arg>
-<arg>consent_onetrust_version=</arg>
-<arg>consent_internal_version=</arg>
-</arguments>
-<assign>
-<var>&amp;{body}</var>
-</assign>
-<msg timestamp="20220705 09:49:56.870" level="INFO">&amp;{body} = { cid=0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4= | twins_status= | twins_gender= | journey_code=JN003 | consent_onetrust_version= | consent_internal_version= }</msg>
-<status status="PASS" starttime="20220705 09:49:56.869" endtime="20220705 09:49:56.870"></status>
-</kw>
-<kw name="Post On Session" library="RequestsLibrary">
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<arguments>
-<arg>alias=${ALIAS}</arg>
-<arg>url=${URI_GEN_QRCODE}</arg>
-<arg>headers=&amp;{HEADER_GEN_QR}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=anything</arg>
-</arguments>
-<assign>
-<var>${response}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.275" level="INFO">POST Request : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/qr/generate 
- path_url=/tcrb-platform-apipartner/v1/qr/generate 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'X-Correlation-Id': 'QA', 'Content-Type': 'application/json', 'partner-code': 'TCMB', 'partner-secret': 'TTPeS8j1ghnwjYcWzvSH3sy3c2/7O+5/c4pOTg1x9wDKndyCf7PPOswjC7M/8Vr8XcKZvo/64LwACtrRkUzYj6Jjr9Q8gTD+uu/MyCCtoi9YkP2Ep9r6af/sG6vR2M8LwRBBuvi0pVn/QTQ1QEKkeXcnOPlelosNpvP+60ree4uYiZsRQQEwkVAp6AFO6zyS8SUIG5gWJ7aWeXN7Zfq0Inmubh9Lbyqx89M4aALNZ2n7oVjNKpTFyzADnABEqMg=', 'x-apigw-api-id': 'es59o179ie', 'Content-Length': '196'} 
- body=b'{"cid": "0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=", "twins_status": "", "twins_gender": "", "journey_code": "JN003", "consent_onetrust_version": "", "consent_internal_version": ""}' 
- </msg>
-<msg timestamp="20220705 09:49:58.276" level="INFO">POST Response : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/qr/generate 
- status=200, reason=OK 
- headers={'Date': 'Tue, 05 Jul 2022 02:49:58 GMT', 'Content-Type': 'application/json', 'Content-Length': '267', 'Connection': 'keep-alive', 'Server': 'Server', 'x-amzn-RequestId': '2530815f-22ba-4308-b168-964f847de0b1', 'x-amz-apigw-id': 'UxcBVEPhyQ0FSGQ=', 'X-Amzn-Trace-Id': 'Root=1-62c3a6d5-2bf104e6025c5e5b0ab6b89a'} 
- body={"status":{"code":"0","message":"Success","remark":"","user_code":"S0001","user_message_en":"Success","user_message_th":"ดำเนินการสำเร็จ"},"data":{"qr":"2431533538176212777324075","qr_expired":"2022-07-06 23:59:59","qr_status":"active"}} 
- </msg>
-<msg timestamp="20220705 09:49:58.276" level="INFO">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-preprod.tcrb-onlinebanking-privated-bottech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20220705 09:49:58.276" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220705 09:49:56.870" endtime="20220705 09:49:58.277"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESPONSE_CODE}</arg>
-<arg>${response.json()["status"]["code"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.284" level="INFO">${RESPONSE_CODE} = 0</msg>
-<status status="PASS" starttime="20220705 09:49:58.277" endtime="20220705 09:49:58.284"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESPONSE_MESSAGE}</arg>
-<arg>${response.json()["status"]["message"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.290" level="INFO">${RESPONSE_MESSAGE} = Success</msg>
-<status status="PASS" starttime="20220705 09:49:58.284" endtime="20220705 09:49:58.290"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESPONSE_REMARK}</arg>
-<arg>${response.json()["status"]["remark"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.296" level="INFO">${RESPONSE_REMARK} = </msg>
-<status status="PASS" starttime="20220705 09:49:58.291" endtime="20220705 09:49:58.297"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${QR_VALUE}</arg>
-<arg>${response.json()["data"]["qr"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.301" level="INFO">${QR_VALUE} = 2431533538176212777324075</msg>
-<status status="PASS" starttime="20220705 09:49:58.297" endtime="20220705 09:49:58.301"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${QR_EXPIRE}</arg>
-<arg>${response.json()["data"]["qr_expired"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.304" level="INFO">${QR_EXPIRE} = 2022-07-06 23:59:59</msg>
-<status status="PASS" starttime="20220705 09:49:58.301" endtime="20220705 09:49:58.304"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${QR_STATUS}</arg>
-<arg>${response.json()["data"]["qr_status"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.306" level="INFO">${QR_STATUS} = active</msg>
-<status status="PASS" starttime="20220705 09:49:58.304" endtime="20220705 09:49:58.306"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESPONSE_API}</arg>
-<arg>${response.content}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.309" level="INFO">${RESPONSE_API} = {"status":{"code":"0","message":"Success","remark":"","user_code":"S0001","user_message_en":"Success","user_message_th":"\xe0\xb8\x94\xe0\xb8\xb3\xe0\xb9\x80\xe0\xb8\x99\xe0\xb8\xb4\xe0\xb8\x99\xe0\xb...</msg>
-<status status="PASS" starttime="20220705 09:49:58.306" endtime="20220705 09:49:58.309"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:56.866" endtime="20220705 09:49:58.309"></status>
-</kw>
-<kw name="Validate_Sign_up_CS" library="Counter_service_page">
-<arguments>
-<arg>3</arg>
-</arguments>
-<kw name="Generate_Partner_Secret_CS" library="Counter_service_page">
 <kw name="Run Process" library="Process">
 <doc>Runs a process and waits for it to complete.</doc>
 <arguments>
 <arg>java</arg>
 <arg>-jar</arg>
-<arg>${PATH_JAR_CS}</arg>
-<arg>CSERV</arg>
-<arg>partner-secret</arg>
-<arg>preprod</arg>
+<arg>${PATH_JAR_PARTNER}</arg>
+<arg>hash</arg>
+<arg>${cid}</arg>
 <arg>file</arg>
 <arg>file</arg>
 <arg>alias=myproc</arg>
 </arguments>
-<msg timestamp="20220705 09:49:58.311" level="INFO">Starting process:
-java -jar tcrb-ekyc-partner-1.8.jar CSERV partner-secret preprod file file</msg>
-<msg timestamp="20220705 09:49:58.316" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20220705 09:49:58.492" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20220705 09:49:58.311" endtime="20220705 09:49:58.492"></status>
+<msg timestamp="20220711 21:50:30.756" level="INFO">Starting process:
+java -jar tcrb-ekyc-partner-1.8.jar hash 1100600292875 file file</msg>
+<msg timestamp="20220711 21:50:30.761" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20220711 21:50:30.858" level="INFO">Process completed.</msg>
+<status status="PASS" starttime="20220711 21:50:30.756" endtime="20220711 21:50:30.858"></status>
 </kw>
 <kw name="Get File" library="OperatingSystem">
 <doc>Returns the contents of a specified file.</doc>
 <arguments>
-<arg>partner_secret.txt</arg>
+<arg>hashing.txt</arg>
 </arguments>
 <assign>
 <var>${TextFileContent}</var>
 </assign>
-<msg timestamp="20220705 09:49:58.493" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220705 09:49:58.494" level="INFO">${TextFileContent} = IHHIM30J8mRzwzETxjmDdYakXUPV44mhZ9qYOqtdkkme8b9FR+lgan3HSrQMmrYrQcZDrZ4H9p3hTThaPlJ9JOFAUGgaddjYY++3PRqbGub5bnnAHUyxPMk6ceidD2wXEnmdywwDir14Dudm1UmuUR0OYtmb9ihPA1dhkIAS099Yzv0QCuJv5R2ouQAcJ4DH0Ybnjrg9...</msg>
-<status status="PASS" starttime="20220705 09:49:58.493" endtime="20220705 09:49:58.494"></status>
+<msg timestamp="20220711 21:50:30.860" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/hashing.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/hashing.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20220711 21:50:30.860" level="INFO">${TextFileContent} = 88d903cf1259372980ec75cb3117a215a10f5ba040d33e64fc04164379e9fad1</msg>
+<status status="PASS" starttime="20220711 21:50:30.859" endtime="20220711 21:50:30.860"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
 <arguments>
-<arg>${GET_PARTNER_SECRET_CS}</arg>
+<arg>${GET_CID_HASH}</arg>
 <arg>${TextFileContent}</arg>
 </arguments>
-<msg timestamp="20220705 09:49:58.497" level="INFO">${GET_PARTNER_SECRET_CS} = IHHIM30J8mRzwzETxjmDdYakXUPV44mhZ9qYOqtdkkme8b9FR+lgan3HSrQMmrYrQcZDrZ4H9p3hTThaPlJ9JOFAUGgaddjYY++3PRqbGub5bnnAHUyxPMk6ceidD2wXEnmdywwDir14Dudm1UmuUR0OYtmb9ihPA1dhkIAS099Yzv0QCuJv5R2ouQAcJ4DH0Ybnjrg9...</msg>
-<status status="PASS" starttime="20220705 09:49:58.494" endtime="20220705 09:49:58.497"></status>
+<msg timestamp="20220711 21:50:30.863" level="INFO">${GET_CID_HASH} = 88d903cf1259372980ec75cb3117a215a10f5ba040d33e64fc04164379e9fad1</msg>
+<status status="PASS" starttime="20220711 21:50:30.860" endtime="20220711 21:50:30.863"></status>
 </kw>
-<status status="PASS" starttime="20220705 09:49:58.310" endtime="20220705 09:49:58.497"></status>
+<status status="PASS" starttime="20220711 21:50:30.755" endtime="20220711 21:50:30.863"></status>
 </kw>
-<kw name="Set To Dictionary" library="Collections">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<kw name="Set_Facial_temp_lock" library="Connect_database_page">
 <arguments>
-<arg>${HEADER_COUNTER_SERVICE}</arg>
-<arg>partner-secret=${GET_PARTNER_SECRET_CS}</arg>
+<arg>${GET_CID_HASH}</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:49:58.497" endtime="20220705 09:49:58.498"></status>
-</kw>
-<kw name="Get_Data_Counter_Service" library="Get_data_excel">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
 <arguments>
-<arg>${row}</arg>
+<arg>psycopg2</arg>
+<arg>${DBName}</arg>
+<arg>${DBUser}</arg>
+<arg>${DBPass}</arg>
+<arg>${DBHost}</arg>
+<arg>${DBPort}</arg>
+</arguments>
+<msg timestamp="20220711 21:50:30.876" level="INFO">Connecting using : psycopg2.connect(database=bot_v2, user=postgres, password=RDBtxjPqaOmrasU4uNi2, host=tcrb-bot-pprd-db.cluster-cnu8aurcdwzj.ap-southeast-1.rds.amazonaws.com, port=5432) </msg>
+<status status="PASS" starttime="20220711 21:50:30.864" endtime="20220711 21:50:31.173"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<arguments>
+<arg>UPDATE image_db.customer_facial_lock SET temporary_lock=true WHERE cid_hash='${input_cid_hash}'</arg>
+</arguments>
+<msg timestamp="20220711 21:50:31.174" level="INFO">Executing : Execute SQL String  |  UPDATE image_db.customer_facial_lock SET temporary_lock=true WHERE cid_hash='88d903cf1259372980ec75cb3117a215a10f5ba040d33e64fc04164379e9fad1' </msg>
+<status status="PASS" starttime="20220711 21:50:31.174" endtime="20220711 21:50:31.291"></status>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20220711 21:50:31.292" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20220711 21:50:31.292" endtime="20220711 21:50:31.292"></status>
+</kw>
+<status status="PASS" starttime="20220711 21:50:30.863" endtime="20220711 21:50:31.293"></status>
+</kw>
+<status status="PASS" starttime="20220711 21:50:30.755" endtime="20220711 21:50:31.293"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Api-integrate-mobile_page.Check_Last_Version</arg>
+<arg>11</arg>
+</arguments>
+<kw name="Check_Last_Version" library="Api-integrate-mobile_page">
+<arguments>
+<arg>11</arg>
+</arguments>
+<kw name="Get_cid_excel" library="Get_data_excel">
+<arguments>
+<arg>${row_cid_for_Check}</arg>
+<arg>check_eligible</arg>
 </arguments>
 <kw name="Open Excel Document" library="ExcelLibrary">
 <doc>Opens xlsx document file.</doc>
 <arguments>
-<arg>filename=${FILE_CS}</arg>
+<arg>filename=${FILE_NAME_QR}</arg>
 <arg>doc_id=doc1</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:49:58.498" endtime="20220705 09:49:58.512"></status>
+<status status="PASS" starttime="20220711 21:50:31.298" endtime="20220711 21:50:31.382"></status>
 </kw>
 <kw name="Read Excel Cell" library="ExcelLibrary">
 <doc>Returns content of a cell.</doc>
 <arguments>
 <arg>row_num=${row}</arg>
 <arg>col_num=3</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<assign>
-<var>${get_trans_ref}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.512" level="INFO">${get_trans_ref} = 20220705-01</msg>
-<status status="PASS" starttime="20220705 09:49:58.512" endtime="20220705 09:49:58.512"></status>
-</kw>
-<kw name="Read Excel Cell" library="ExcelLibrary">
-<doc>Returns content of a cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=4</arg>
-<arg>sheet_name=Signup_CS</arg>
+<arg>sheet_name=${input_sheet_name}</arg>
 </arguments>
 <assign>
 <var>${get_cid}</var>
 </assign>
-<msg timestamp="20220705 09:49:58.513" level="INFO">${get_cid} = 1100600292875</msg>
-<status status="PASS" starttime="20220705 09:49:58.513" endtime="20220705 09:49:58.513"></status>
-</kw>
-<kw name="Read Excel Cell" library="ExcelLibrary">
-<doc>Returns content of a cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=5</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<assign>
-<var>${image_id_card}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.513" level="INFO">${image_id_card} = IMG</msg>
-<status status="PASS" starttime="20220705 09:49:58.513" endtime="20220705 09:49:58.513"></status>
-</kw>
-<kw name="Read Excel Cell" library="ExcelLibrary">
-<doc>Returns content of a cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=6</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<assign>
-<var>${image_identify}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.514" level="INFO">${image_identify} = IMG_SOURCE</msg>
-<status status="PASS" starttime="20220705 09:49:58.514" endtime="20220705 09:49:58.514"></status>
-</kw>
-<kw name="Read Excel Cell" library="ExcelLibrary">
-<doc>Returns content of a cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=7</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<assign>
-<var>${compare_score}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.514" level="INFO">${compare_score} = 80</msg>
-<status status="PASS" starttime="20220705 09:49:58.514" endtime="20220705 09:49:58.514"></status>
-</kw>
-<kw name="Read Excel Cell" library="ExcelLibrary">
-<doc>Returns content of a cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=8</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<assign>
-<var>${dopa_pass}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.515" level="INFO">${dopa_pass} = True</msg>
-<status status="PASS" starttime="20220705 09:49:58.515" endtime="20220705 09:49:58.515"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_TRANS_REF}</arg>
-<arg>${get_trans_ref}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.515" level="INFO">${GET_TRANS_REF} = 20220705-01</msg>
-<status status="PASS" starttime="20220705 09:49:58.515" endtime="20220705 09:49:58.516"></status>
+<msg timestamp="20220711 21:50:31.383" level="INFO">${get_cid} = 0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=</msg>
+<status status="PASS" starttime="20220711 21:50:31.382" endtime="20220711 21:50:31.383"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -331,50 +172,22 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV partner-secret preprod file file</msg>
 <arg>${GET_CID}</arg>
 <arg>${get_cid}</arg>
 </arguments>
-<msg timestamp="20220705 09:49:58.516" level="INFO">${GET_CID} = 1100600292875</msg>
-<status status="PASS" starttime="20220705 09:49:58.516" endtime="20220705 09:49:58.516"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_IMG_ID_CARD}</arg>
-<arg>${image_id_card}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.519" level="INFO">${GET_IMG_ID_CARD} = IMG</msg>
-<status status="PASS" starttime="20220705 09:49:58.516" endtime="20220705 09:49:58.519"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_SELFIE}</arg>
-<arg>${image_identify}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.521" level="INFO">${GET_SELFIE} = IMG_SOURCE</msg>
-<status status="PASS" starttime="20220705 09:49:58.519" endtime="20220705 09:49:58.521"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_IMG_SCORE}</arg>
-<arg>${compare_score}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.524" level="INFO">${GET_IMG_SCORE} = 80</msg>
-<status status="PASS" starttime="20220705 09:49:58.521" endtime="20220705 09:49:58.524"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_DOPA_PASS}</arg>
-<arg>${dopa_pass}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.526" level="INFO">${GET_DOPA_PASS} = True</msg>
-<status status="PASS" starttime="20220705 09:49:58.524" endtime="20220705 09:49:58.526"></status>
+<msg timestamp="20220711 21:50:31.383" level="INFO">${GET_CID} = 0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=</msg>
+<status status="PASS" starttime="20220711 21:50:31.383" endtime="20220711 21:50:31.383"></status>
 </kw>
 <kw name="Close All Excel Documents" library="ExcelLibrary">
 <doc>Closes all opened documents.</doc>
-<status status="PASS" starttime="20220705 09:49:58.526" endtime="20220705 09:49:58.526"></status>
+<status status="PASS" starttime="20220711 21:50:31.384" endtime="20220711 21:50:31.384"></status>
 </kw>
-<status status="PASS" starttime="20220705 09:49:58.498" endtime="20220705 09:49:58.526"></status>
+<status status="PASS" starttime="20220711 21:50:31.296" endtime="20220711 21:50:31.384"></status>
+</kw>
+<kw name="Set To Dictionary" library="Collections">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<arguments>
+<arg>${HEADER_API_INTEGRATE_MOBILE}</arg>
+<arg>partner-secret=${GET_PARTNER_SECRET}</arg>
+</arguments>
+<status status="PASS" starttime="20220711 21:50:31.384" endtime="20220711 21:50:31.385"></status>
 </kw>
 <kw name="Create Session" library="RequestsLibrary">
 <doc>Create Session: create a HTTP session to a server</doc>
@@ -382,114 +195,41 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV partner-secret preprod file file</msg>
 <arg>alias=${ALIAS}</arg>
 <arg>url=${BOT_CORE_SERVICE}</arg>
 </arguments>
-<msg timestamp="20220705 09:49:58.527" level="INFO">Creating Session using : alias=eKYC, url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220705 09:49:58.526" endtime="20220705 09:49:58.527"></status>
+<msg timestamp="20220711 21:50:31.385" level="INFO">Creating Session using : alias=eKYC, url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220711 21:50:31.385" endtime="20220711 21:50:31.386"></status>
 </kw>
-<kw name="Encrypt_data_counter_service" library="Counter_service_page">
-<arguments>
-<arg>{ "qr": "${QR_VALUE}", "trans_ref": "${GET_TRANS_REF}", "cid": "${GET_CID}" }</arg>
-</arguments>
-<kw name="Create_File_txt" library="Counter_service_page">
-<arguments>
-<arg>${data}</arg>
-</arguments>
-<kw name="Create File" library="OperatingSystem">
-<doc>Creates a file with the given content and encoding.</doc>
-<arguments>
-<arg>input_data.txt</arg>
-<arg>${data_for_save}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.529" level="INFO" html="yes">Created file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/input_data.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/input_data.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20220705 09:49:58.529" endtime="20220705 09:49:58.529"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:58.528" endtime="20220705 09:49:58.530"></status>
-</kw>
-<kw name="Run Process" library="Process">
-<doc>Runs a process and waits for it to complete.</doc>
-<arguments>
-<arg>java</arg>
-<arg>-jar</arg>
-<arg>${PATH_JAR_CS}</arg>
-<arg>CSERV</arg>
-<arg>encrypt</arg>
-<arg>input_data.txt</arg>
-<arg>preprod</arg>
-<arg>file</arg>
-<arg>file</arg>
-<arg>alias=myproc</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.530" level="INFO">Starting process:
-java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file file</msg>
-<msg timestamp="20220705 09:49:58.535" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20220705 09:49:58.686" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20220705 09:49:58.530" endtime="20220705 09:49:58.686"></status>
-</kw>
-<kw name="Read_File_Encrypt" library="Counter_service_page">
-<arguments>
-<arg>partner_encrypt.txt</arg>
-</arguments>
-<kw name="Get File" library="OperatingSystem">
-<doc>Returns the contents of a specified file.</doc>
-<arguments>
-<arg>${data_encrypt_file}</arg>
-</arguments>
-<assign>
-<var>${TextFileContent}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.689" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_encrypt.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_encrypt.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220705 09:49:58.689" level="INFO">${TextFileContent} = 1zZeq41NP7EK20xcF7XS+prKaHVCYC3ZKoWk6kQxwvEDjiHfmD/Lz6c80dPepZb78nyIhwnmAkRMECurMA+ZMi/u+mA9Gju/Q+scKDIlAPWXcDBMQ2+BPP33ci5Amvz3ONFVYexkkt4w5Mzl2enavNSLv9oN</msg>
-<status status="PASS" starttime="20220705 09:49:58.688" endtime="20220705 09:49:58.689"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESULT_ENCRYPT_DATA}</arg>
-<arg>${TextFileContent}</arg>
-</arguments>
-<msg timestamp="20220705 09:49:58.692" level="INFO">${RESULT_ENCRYPT_DATA} = 1zZeq41NP7EK20xcF7XS+prKaHVCYC3ZKoWk6kQxwvEDjiHfmD/Lz6c80dPepZb78nyIhwnmAkRMECurMA+ZMi/u+mA9Gju/Q+scKDIlAPWXcDBMQ2+BPP33ci5Amvz3ONFVYexkkt4w5Mzl2enavNSLv9oN</msg>
-<status status="PASS" starttime="20220705 09:49:58.689" endtime="20220705 09:49:58.692"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:58.687" endtime="20220705 09:49:58.692"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:58.527" endtime="20220705 09:49:58.692"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>data=${RESULT_ENCRYPT_DATA}</arg>
-</arguments>
-<assign>
-<var>&amp;{body}</var>
-</assign>
-<msg timestamp="20220705 09:49:58.693" level="INFO">&amp;{body} = { data=1zZeq41NP7EK20xcF7XS+prKaHVCYC3ZKoWk6kQxwvEDjiHfmD/Lz6c80dPepZb78nyIhwnmAkRMECurMA+ZMi/u+mA9Gju/Q+scKDIlAPWXcDBMQ2+BPP33ci5Amvz3ONFVYexkkt4w5Mzl2enavNSLv9oN }</msg>
-<status status="PASS" starttime="20220705 09:49:58.692" endtime="20220705 09:49:58.693"></status>
-</kw>
-<kw name="Post On Session" library="RequestsLibrary">
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
 <arguments>
 <arg>alias=${ALIAS}</arg>
-<arg>url=${URI_SIGNUP_CS_VALIDATE}</arg>
-<arg>headers=&amp;{HEADER_COUNTER_SERVICE}</arg>
-<arg>json=${body}</arg>
+<arg>url=/tcrb-platform-apipartner/v1/customer/kyc_status?cid=${GET_CID}&amp;ial=2.3</arg>
+<arg>headers=&amp;{HEADER_API_INTEGRATE_MOBILE}</arg>
 <arg>expected_status=anything</arg>
 </arguments>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20220705 09:50:01.712" level="INFO">POST Request : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/cs/qr/validate 
- path_url=/tcrb-platform-apipartner/v1/cs/qr/validate 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'X-Correlation-Id': 'QA', 'Content-Type': 'application/json', 'partner-code': 'CSERV', 'partner-secret': 'IHHIM30J8mRzwzETxjmDdYakXUPV44mhZ9qYOqtdkkme8b9FR+lgan3HSrQMmrYrQcZDrZ4H9p3hTThaPlJ9JOFAUGgaddjYY++3PRqbGub5bnnAHUyxPMk6ceidD2wXEnmdywwDir14Dudm1UmuUR0OYtmb9ihPA1dhkIAS099Yzv0QCuJv5R2ouQAcJ4DH0Ybnjrg9gDVwPzesqfwM9SXorABZG+BiZLruAxJw963q4nEtJkzkdvU8mz5glrf/', 'x-apigw-api-id': 'es59o179ie', 'Content-Length': '168'} 
- body=b'{"data": "1zZeq41NP7EK20xcF7XS+prKaHVCYC3ZKoWk6kQxwvEDjiHfmD/Lz6c80dPepZb78nyIhwnmAkRMECurMA+ZMi/u+mA9Gju/Q+scKDIlAPWXcDBMQ2+BPP33ci5Amvz3ONFVYexkkt4w5Mzl2enavNSLv9oN"}' 
+<msg timestamp="20220711 21:50:34.873" level="INFO">GET Request : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/customer/kyc_status?cid=0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=&amp;ial=2.3 
+ path_url=/tcrb-platform-apipartner/v1/customer/kyc_status?cid=0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=&amp;ial=2.3 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'X-Correlation-Id': 'aaaaaaaa', 'partner-code': 'TCMB', 'partner-secret': 'AW3oQwpisIy6laWdlvBHF+fJqZLqN7QUjOBKfII9oayByF5CLg5ptDGZ8+9l8uJ+Q6kXahIgdLLMMozak5CHAdgFWp6ihP2aMkBnSFWUss8mnmUT2zEq9En3Pn6PP51NULKhMJpqWcDRu2M/TW3t3vQc3A/CggLftYq3seC4adxowO07g3MCihSONFfQB3oEXVR9T8qGC6alvkAGFNHXMttVJ3E4LkI6l576+wlxbfnQkmd51p6TufiudEB6Cio=', 'x-apigw-api-id': 'es59o179ie'} 
+ body=None 
  </msg>
-<msg timestamp="20220705 09:50:01.713" level="INFO">POST Response : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/cs/qr/validate 
+<msg timestamp="20220711 21:50:34.874" level="INFO">GET Response : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/customer/kyc_status?cid=0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=&amp;ial=2.3 
  status=200, reason=OK 
- headers={'Date': 'Tue, 05 Jul 2022 02:50:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '266', 'Connection': 'keep-alive', 'Server': 'Server', 'x-amzn-RequestId': '036add4b-2c85-456d-b8aa-7204926f56a3', 'x-amz-apigw-id': 'UxcBmE0DSQ0FlcQ=', 'X-Amzn-Trace-Id': 'Root=1-62c3a6d6-62f499de7b4fc7f812fbd5eb'} 
- body={"status":{"code":"0","message":"Success","remark":"","user_code":"S0001","user_message_en":"Success","user_message_th":"ดำเนินการสำเร็จ"},"data":{"journey_code":"JN003","journey_name":"EKYC QR Signup","kyc_trans_id":"EQ2022070500002"}} 
+ headers={'Date': 'Mon, 11 Jul 2022 14:50:34 GMT', 'Content-Type': 'application/json', 'Content-Length': '816', 'Connection': 'keep-alive', 'Server': 'Server', 'x-amzn-RequestId': '28c15c3d-d47a-4acb-ae2a-7155553c0096', 'x-amz-apigw-id': 'VG3MtEkcSQ0FRqA=', 'X-Amzn-Trace-Id': 'Root=1-62cc38b7-2e8fa1e67f053dbd2b258929'} 
+ body={"status":{"code":"2025","message":"Customer Temporary Locked","remark":"","user_code":"E0017","user_message_en":"Your profile has been locked due to reached maximum face recognition attempts.&lt;br/&gt;Please call customer care to unlock. 02-697-5454","user_message_th":"โปรไฟล์ของคุณถูกล็อค เนื่องจากการพยายามเปรียบเทียบใบหน้าถึงขีดจำกัดแล้ว&lt;br/&gt;กรุณาโทรติดต่อฝ่ายดูแลลูกค้าเพื่อปลดล็อค 02-697-5454"},"data":{"consent_internal_version":"CS.20220705.0001","consent_onetrust_version":"30","consent_date":"2022-07-11 21:12:02.695","consent_status":"ACTIVE","transaction_date":"2022-07-11 21:11:27.797"}} 
  </msg>
-<msg timestamp="20220705 09:50:01.713" level="INFO">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-preprod.tcrb-onlinebanking-privated-bottech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+<msg timestamp="20220711 21:50:34.874" level="INFO">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-preprod.tcrb-onlinebanking-privated-bottech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220705 09:50:01.714" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220705 09:49:58.693" endtime="20220705 09:50:01.714"></status>
+<msg timestamp="20220711 21:50:34.874" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220711 21:50:31.386" endtime="20220711 21:50:34.874"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.json()["status"]["code"]}</arg>
+</arguments>
+<status status="PASS" starttime="20220711 21:50:34.875" endtime="20220711 21:50:34.876"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -497,8 +237,8 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file fi
 <arg>${RESPONSE_CODE}</arg>
 <arg>${response.json()["status"]["code"]}</arg>
 </arguments>
-<msg timestamp="20220705 09:50:01.716" level="INFO">${RESPONSE_CODE} = 0</msg>
-<status status="PASS" starttime="20220705 09:50:01.714" endtime="20220705 09:50:01.716"></status>
+<msg timestamp="20220711 21:50:34.881" level="INFO">${RESPONSE_CODE} = 2025</msg>
+<status status="PASS" starttime="20220711 21:50:34.876" endtime="20220711 21:50:34.881"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -506,8 +246,8 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file fi
 <arg>${RESPONSE_MESSAGE}</arg>
 <arg>${response.json()["status"]["message"]}</arg>
 </arguments>
-<msg timestamp="20220705 09:50:01.718" level="INFO">${RESPONSE_MESSAGE} = Success</msg>
-<status status="PASS" starttime="20220705 09:50:01.716" endtime="20220705 09:50:01.718"></status>
+<msg timestamp="20220711 21:50:34.887" level="INFO">${RESPONSE_MESSAGE} = Customer Temporary Locked</msg>
+<status status="PASS" starttime="20220711 21:50:34.881" endtime="20220711 21:50:34.887"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -515,8 +255,17 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file fi
 <arg>${RESPONSE_REMARK}</arg>
 <arg>${response.json()["status"]["remark"]}</arg>
 </arguments>
-<msg timestamp="20220705 09:50:01.719" level="INFO">${RESPONSE_REMARK} = </msg>
-<status status="PASS" starttime="20220705 09:50:01.718" endtime="20220705 09:50:01.720"></status>
+<msg timestamp="20220711 21:50:34.891" level="INFO">${RESPONSE_REMARK} = </msg>
+<status status="PASS" starttime="20220711 21:50:34.887" endtime="20220711 21:50:34.891"></status>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${RESPONSE_CONSENTVERSION}</arg>
+<arg>${response.json()["data"]["consent_onetrust_version"]}</arg>
+</arguments>
+<msg timestamp="20220711 21:50:34.895" level="INFO">${RESPONSE_CONSENTVERSION} = 30</msg>
+<status status="PASS" starttime="20220711 21:50:34.891" endtime="20220711 21:50:34.895"></status>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <doc>Makes a variable available globally in all tests and suites.</doc>
@@ -524,332 +273,103 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file fi
 <arg>${RESPONSE_API}</arg>
 <arg>${response.content}</arg>
 </arguments>
-<msg timestamp="20220705 09:50:01.721" level="INFO">${RESPONSE_API} = {"status":{"code":"0","message":"Success","remark":"","user_code":"S0001","user_message_en":"Success","user_message_th":"\xe0\xb8\x94\xe0\xb8\xb3\xe0\xb9\x80\xe0\xb8\x99\xe0\xb8\xb4\xe0\xb8\x99\xe0\xb...</msg>
-<status status="PASS" starttime="20220705 09:50:01.720" endtime="20220705 09:50:01.721"></status>
+<msg timestamp="20220711 21:50:34.898" level="INFO">${RESPONSE_API} = {"status":{"code":"2025","message":"Customer Temporary Locked","remark":"","user_code":"E0017","user_message_en":"Your profile has been locked due to reached maximum face recognition attempts.&lt;br/&gt;Ple...</msg>
+<status status="PASS" starttime="20220711 21:50:34.895" endtime="20220711 21:50:34.898"></status>
 </kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" starttime="20220711 21:50:31.295" endtime="20220711 21:50:34.898"></status>
+</kw>
+<status status="PASS" starttime="20220711 21:50:31.294" endtime="20220711 21:50:34.898"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn" type="teardown">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
 <arguments>
-<arg>${RESPONSE_USERCODE}</arg>
-<arg>${response.json()["status"]["user_code"]}</arg>
+<arg>save_data_excel_page.Save_Result_get_eligible_bio</arg>
+<arg>11</arg>
 </arguments>
-<msg timestamp="20220705 09:50:01.727" level="INFO">${RESPONSE_USERCODE} = S0001</msg>
-<status status="PASS" starttime="20220705 09:50:01.722" endtime="20220705 09:50:01.727"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
+<kw name="Save_Result_get_eligible_bio" library="save_data_excel_page">
 <arguments>
-<arg>${RESPONSE_USER_EN}</arg>
-<arg>${response.json()["status"]["user_message_en"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.732" level="INFO">${RESPONSE_USER_EN} = Success</msg>
-<status status="PASS" starttime="20220705 09:50:01.727" endtime="20220705 09:50:01.732"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESPONSE_USER_TH}</arg>
-<arg>${response.json()["status"]["user_message_th"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.736" level="INFO">${RESPONSE_USER_TH} = ดำเนินการสำเร็จ</msg>
-<status status="PASS" starttime="20220705 09:50:01.732" endtime="20220705 09:50:01.736"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${TRANS_ID}</arg>
-<arg>${response.json()["data"]["kyc_trans_id"]}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.740" level="INFO">${TRANS_ID} = EQ2022070500002</msg>
-<status status="PASS" starttime="20220705 09:50:01.736" endtime="20220705 09:50:01.741"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:58.310" endtime="20220705 09:50:01.741"></status>
-</kw>
-<kw name="Confirmation_Sign_up_CS" library="Counter_service_page">
-<kw name="Generate_Partner_Secret_CS" library="Counter_service_page">
-<kw name="Run Process" library="Process">
-<doc>Runs a process and waits for it to complete.</doc>
-<arguments>
-<arg>java</arg>
-<arg>-jar</arg>
-<arg>${PATH_JAR_CS}</arg>
-<arg>CSERV</arg>
-<arg>partner-secret</arg>
-<arg>preprod</arg>
-<arg>file</arg>
-<arg>file</arg>
-<arg>alias=myproc</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.743" level="INFO">Starting process:
-java -jar tcrb-ekyc-partner-1.8.jar CSERV partner-secret preprod file file</msg>
-<msg timestamp="20220705 09:50:01.748" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20220705 09:50:01.920" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20220705 09:50:01.742" endtime="20220705 09:50:01.920"></status>
-</kw>
-<kw name="Get File" library="OperatingSystem">
-<doc>Returns the contents of a specified file.</doc>
-<arguments>
-<arg>partner_secret.txt</arg>
-</arguments>
-<assign>
-<var>${TextFileContent}</var>
-</assign>
-<msg timestamp="20220705 09:50:01.921" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_secret.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220705 09:50:01.921" level="INFO">${TextFileContent} = ZCV16ILxKA2wClGanhv71fqm8wfJSjF9tC8UFG6O9BiU032ZUAdorThl346tE5Ngw3dmKc2ARr5ZL32RIIENxVNztZFTRoMJuuc3b1XAfwnlhoxFQomeZ1XoLxU88b0TjsKGiWzx8palC0dDzZANk2Q+gnlw8DSH21ec3RzM3et9hXym84abEWNwR3xJ1a12vuUNBB4B...</msg>
-<status status="PASS" starttime="20220705 09:50:01.921" endtime="20220705 09:50:01.921"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${GET_PARTNER_SECRET_CS}</arg>
-<arg>${TextFileContent}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.922" level="INFO">${GET_PARTNER_SECRET_CS} = ZCV16ILxKA2wClGanhv71fqm8wfJSjF9tC8UFG6O9BiU032ZUAdorThl346tE5Ngw3dmKc2ARr5ZL32RIIENxVNztZFTRoMJuuc3b1XAfwnlhoxFQomeZ1XoLxU88b0TjsKGiWzx8palC0dDzZANk2Q+gnlw8DSH21ec3RzM3et9hXym84abEWNwR3xJ1a12vuUNBB4B...</msg>
-<status status="PASS" starttime="20220705 09:50:01.922" endtime="20220705 09:50:01.922"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:50:01.742" endtime="20220705 09:50:01.922"></status>
-</kw>
-<kw name="Set To Dictionary" library="Collections">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
-<arguments>
-<arg>${HEADER_COUNTER_SERVICE}</arg>
-<arg>partner-secret=${GET_PARTNER_SECRET_CS}</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:01.922" endtime="20220705 09:50:01.923"></status>
-</kw>
-<kw name="Create Session" library="RequestsLibrary">
-<doc>Create Session: create a HTTP session to a server</doc>
-<arguments>
-<arg>alias=${ALIAS}</arg>
-<arg>url=${BOT_CORE_SERVICE}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.923" level="INFO">Creating Session using : alias=eKYC, url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220705 09:50:01.923" endtime="20220705 09:50:01.924"></status>
-</kw>
-<kw name="Encrypt_data_counter_service" library="Counter_service_page">
-<arguments>
-<arg>{ "trans_ref" : "${GET_TRANS_REF}", "cid" : "${GET_CID}", "title_th" : "นาย", "title_en" : "Mr.", "first_name_th" : "พัชรพล", "first_name_en" : "Patcharapol", "middle_name_th" : "", "middle_name_en" : "", "last_name_th" : "ศุภศิริรัตน์", "last_name_en" : "Supasirirat", "house_no" : "425", "moo" : "1", "alley" : "", "lane" : "", "road" : "Navamin", "sub_district" : "", "district" : "Klongkum", "province" : "buengkum", "sex" : "male", "birth_date" : "27-07-2537", "date_of_issue" : "04-06-2559", "expired_date" : "26-07-2567", "issue_by" : "", "request_no" : "", "image_id_card" : "${${GET_IMG_ID_CARD}}", "image_identify" : "${${GET_SELFIE}}", "compare_score" : "${GET_IMG_SCORE}", "dopa_pass" : true , "timestamp" : "2022-03-28 16:34:00" }</arg>
-</arguments>
-<kw name="Create_File_txt" library="Counter_service_page">
-<arguments>
-<arg>${data}</arg>
-</arguments>
-<kw name="Create File" library="OperatingSystem">
-<doc>Creates a file with the given content and encoding.</doc>
-<arguments>
-<arg>input_data.txt</arg>
-<arg>${data_for_save}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.928" level="INFO" html="yes">Created file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/input_data.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/input_data.txt&lt;/a&gt;'.</msg>
-<status status="PASS" starttime="20220705 09:50:01.927" endtime="20220705 09:50:01.928"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:50:01.926" endtime="20220705 09:50:01.928"></status>
-</kw>
-<kw name="Run Process" library="Process">
-<doc>Runs a process and waits for it to complete.</doc>
-<arguments>
-<arg>java</arg>
-<arg>-jar</arg>
-<arg>${PATH_JAR_CS}</arg>
-<arg>CSERV</arg>
-<arg>encrypt</arg>
-<arg>input_data.txt</arg>
-<arg>preprod</arg>
-<arg>file</arg>
-<arg>file</arg>
-<arg>alias=myproc</arg>
-</arguments>
-<msg timestamp="20220705 09:50:01.929" level="INFO">Starting process:
-java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file file</msg>
-<msg timestamp="20220705 09:50:01.933" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20220705 09:50:02.141" level="INFO">Process completed.</msg>
-<status status="PASS" starttime="20220705 09:50:01.928" endtime="20220705 09:50:02.141"></status>
-</kw>
-<kw name="Read_File_Encrypt" library="Counter_service_page">
-<arguments>
-<arg>partner_encrypt.txt</arg>
-</arguments>
-<kw name="Get File" library="OperatingSystem">
-<doc>Returns the contents of a specified file.</doc>
-<arguments>
-<arg>${data_encrypt_file}</arg>
-</arguments>
-<assign>
-<var>${TextFileContent}</var>
-</assign>
-<msg timestamp="20220705 09:50:02.143" level="INFO" html="yes">Getting file '&lt;a href="file:///Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_encrypt.txt"&gt;/Users/patcharapol/Documents/GitHub/eKYC_preprod/partner_encrypt.txt&lt;/a&gt;'.</msg>
-<msg timestamp="20220705 09:50:02.145" level="INFO">${TextFileContent} = Jr37u+Ug+3mG2ZxSec3KwtcMBLyYfSyNw7pyYL6PelmofY0eLeaRnwlKCQJNqucOj4d9uOMl1sk+x7dzOEwydP0ZKJFxw68tQIuAkkzz+RuZFzuapuLyFEpDQ1OAvyrlbeG8UUUy8i03J6jogL7fmDohVQK5pJrLABAdAOAAYT+etIWfC5lUwM/fHA5R1HiT+zvkDijI...</msg>
-<status status="PASS" starttime="20220705 09:50:02.143" endtime="20220705 09:50:02.145"></status>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<arguments>
-<arg>${RESULT_ENCRYPT_DATA}</arg>
-<arg>${TextFileContent}</arg>
-</arguments>
-<msg timestamp="20220705 09:50:02.147" level="INFO">${RESULT_ENCRYPT_DATA} = Jr37u+Ug+3mG2ZxSec3KwtcMBLyYfSyNw7pyYL6PelmofY0eLeaRnwlKCQJNqucOj4d9uOMl1sk+x7dzOEwydP0ZKJFxw68tQIuAkkzz+RuZFzuapuLyFEpDQ1OAvyrlbeG8UUUy8i03J6jogL7fmDohVQK5pJrLABAdAOAAYT+etIWfC5lUwM/fHA5R1HiT+zvkDijI...</msg>
-<status status="PASS" starttime="20220705 09:50:02.146" endtime="20220705 09:50:02.147"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:50:02.142" endtime="20220705 09:50:02.147"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:50:01.924" endtime="20220705 09:50:02.147"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>data=${RESULT_ENCRYPT_DATA}</arg>
-</arguments>
-<assign>
-<var>&amp;{body}</var>
-</assign>
-<msg timestamp="20220705 09:50:02.150" level="INFO">&amp;{body} = { data=Jr37u+Ug+3mG2ZxSec3KwtcMBLyYfSyNw7pyYL6PelmofY0eLeaRnwlKCQJNqucOj4d9uOMl1sk+x7dzOEwydP0ZKJFxw68tQIuAkkzz+RuZFzuapuLyFEpDQ1OAvyrlbeG8UUUy8i03J6jogL7fmDohVQK5pJrLABAdAOAAYT+etIWfC5lUwM/fHA5R1HiT+...</msg>
-<status status="PASS" starttime="20220705 09:50:02.148" endtime="20220705 09:50:02.150"></status>
-</kw>
-<kw name="Post On Session" library="RequestsLibrary">
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<arguments>
-<arg>alias=${ALIAS}</arg>
-<arg>url=${URI_SIGNUP_CS_CONFIRM}</arg>
-<arg>headers=&amp;{HEADER_COUNTER_SERVICE}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=anything</arg>
-</arguments>
-<assign>
-<var>${response}</var>
-</assign>
-<msg timestamp="20220705 09:50:05.367" level="INFO">POST Request : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/cs/transaction/confirm 
- path_url=/tcrb-platform-apipartner/v1/cs/transaction/confirm 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'X-Correlation-Id': 'QA', 'Content-Type': 'application/json', 'partner-code': 'CSERV', 'partner-secret': 'ZCV16ILxKA2wClGanhv71fqm8wfJSjF9tC8UFG6O9BiU032ZUAdorThl346tE5Ngw3dmKc2ARr5ZL32RIIENxVNztZFTRoMJuuc3b1XAfwnlhoxFQomeZ1XoLxU88b0TjsKGiWzx8palC0dDzZANk2Q+gnlw8DSH21ec3RzM3et9hXym84abEWNwR3xJ1a12vuUNBB4BhhZX6xVI7F+nhl7xISk+VKBn3UojTY22n88vZq0UMzN/OumzozgBpu8a', 'x-apigw-api-id': 'es59o179ie', 'Content-Length': '399476'} 
- body=b'{"data": "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'... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg timestamp="20220705 09:50:05.368" level="INFO">POST Response : url=https://api-preprod.tcrb-onlinebanking-privated-bottech.com/tcrb-platform-apipartner/v1/cs/transaction/confirm 
- status=200, reason=OK 
- headers={'Date': 'Tue, 05 Jul 2022 02:50:05 GMT', 'Content-Type': 'application/json', 'Content-Length': '181', 'Connection': 'keep-alive', 'Server': 'Server', 'x-amzn-RequestId': '5aa2f5e3-9f5c-46c0-b9e5-92caf8424cbb', 'x-amz-apigw-id': 'UxcCOF9LyQ0FQIQ=', 'X-Amzn-Trace-Id': 'Root=1-62c3a6da-4d91a3ea4810b72e53f7bac6'} 
- body={"status":{"code":"0","message":"Success","remark":"","user_code":"S0001","user_message_en":"Success","user_message_th":"ดำเนินการสำเร็จ"},"data":null} 
- </msg>
-<msg timestamp="20220705 09:50:05.368" level="INFO">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/urllib3/connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-preprod.tcrb-onlinebanking-privated-bottech.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20220705 09:50:05.368" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220705 09:50:02.150" endtime="20220705 09:50:05.369"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:50:01.741" endtime="20220705 09:50:05.369"></status>
-</kw>
-<kw name="Save_Result_Counter_Service" library="save_data_excel_page" type="teardown">
-<arguments>
-<arg>3</arg>
+<arg>11</arg>
 </arguments>
 <kw name="Open Excel Document" library="ExcelLibrary">
 <doc>Opens xlsx document file.</doc>
 <arguments>
-<arg>filename=${FILE_CS}</arg>
+<arg>filename=${FILE_NAME_QR}</arg>
 <arg>doc_id=doc10</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.371" endtime="20220705 09:50:05.387"></status>
+<status status="PASS" starttime="20220711 21:50:34.900" endtime="20220711 21:50:34.974"></status>
 </kw>
 <kw name="Write Excel Cell" library="ExcelLibrary">
 <doc>Writes value to the cell.</doc>
 <arguments>
 <arg>row_num=${row}</arg>
-<arg>col_num=10</arg>
+<arg>col_num=4</arg>
 <arg>value=${RESPONSE_CODE}</arg>
-<arg>sheet_name=Signup_CS</arg>
+<arg>sheet_name=check_eligible</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.388" endtime="20220705 09:50:05.389"></status>
+<status status="PASS" starttime="20220711 21:50:34.974" endtime="20220711 21:50:34.975"></status>
 </kw>
 <kw name="Write Excel Cell" library="ExcelLibrary">
 <doc>Writes value to the cell.</doc>
 <arguments>
 <arg>row_num=${row}</arg>
-<arg>col_num=11</arg>
+<arg>col_num=5</arg>
 <arg>value=${RESPONSE_MESSAGE}</arg>
-<arg>sheet_name=Signup_CS</arg>
+<arg>sheet_name=check_eligible</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.390" endtime="20220705 09:50:05.391"></status>
+<status status="PASS" starttime="20220711 21:50:34.975" endtime="20220711 21:50:34.976"></status>
 </kw>
 <kw name="Write Excel Cell" library="ExcelLibrary">
 <doc>Writes value to the cell.</doc>
 <arguments>
 <arg>row_num=${row}</arg>
-<arg>col_num=12</arg>
+<arg>col_num=6</arg>
 <arg>value=${RESPONSE_REMARK}</arg>
-<arg>sheet_name=Signup_CS</arg>
+<arg>sheet_name=check_eligible</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.391" endtime="20220705 09:50:05.392"></status>
+<status status="PASS" starttime="20220711 21:50:34.976" endtime="20220711 21:50:34.976"></status>
 </kw>
 <kw name="Write Excel Cell" library="ExcelLibrary">
 <doc>Writes value to the cell.</doc>
 <arguments>
 <arg>row_num=${row}</arg>
-<arg>col_num=16</arg>
+<arg>col_num=7</arg>
+<arg>value=${RESPONSE_CONSENTVERSION}</arg>
+<arg>sheet_name=check_eligible</arg>
+</arguments>
+<status status="PASS" starttime="20220711 21:50:34.977" endtime="20220711 21:50:34.977"></status>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<doc>Writes value to the cell.</doc>
+<arguments>
+<arg>row_num=${row}</arg>
+<arg>col_num=8</arg>
 <arg>value=${RESPONSE_API}</arg>
-<arg>sheet_name=Signup_CS</arg>
+<arg>sheet_name=check_eligible</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.393" endtime="20220705 09:50:05.393"></status>
-</kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
-<doc>Writes value to the cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=9</arg>
-<arg>value=${TRANS_ID}</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:05.394" endtime="20220705 09:50:05.394"></status>
-</kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
-<doc>Writes value to the cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=13</arg>
-<arg>value=${RESPONSE_USERCODE}</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:05.395" endtime="20220705 09:50:05.395"></status>
-</kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
-<doc>Writes value to the cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=14</arg>
-<arg>value=${RESPONSE_USER_EN}</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:05.396" endtime="20220705 09:50:05.396"></status>
-</kw>
-<kw name="Write Excel Cell" library="ExcelLibrary">
-<doc>Writes value to the cell.</doc>
-<arguments>
-<arg>row_num=${row}</arg>
-<arg>col_num=15</arg>
-<arg>value=${RESPONSE_USER_TH}</arg>
-<arg>sheet_name=Signup_CS</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:05.397" endtime="20220705 09:50:05.397"></status>
+<status status="PASS" starttime="20220711 21:50:34.977" endtime="20220711 21:50:34.978"></status>
 </kw>
 <kw name="Save Excel Document" library="ExcelLibrary">
 <doc>Saves the current document to disk.</doc>
 <arguments>
-<arg>filename=${FILE_CS}</arg>
+<arg>filename=${FILE_NAME_QR}</arg>
 </arguments>
-<status status="PASS" starttime="20220705 09:50:05.397" endtime="20220705 09:50:05.412"></status>
+<status status="PASS" starttime="20220711 21:50:34.978" endtime="20220711 21:50:35.045"></status>
 </kw>
 <kw name="Close All Excel Documents" library="ExcelLibrary">
 <doc>Closes all opened documents.</doc>
-<status status="PASS" starttime="20220705 09:50:05.412" endtime="20220705 09:50:05.412"></status>
+<status status="PASS" starttime="20220711 21:50:35.045" endtime="20220711 21:50:35.045"></status>
 </kw>
-<status status="PASS" starttime="20220705 09:50:05.370" endtime="20220705 09:50:05.412"></status>
+<status status="PASS" starttime="20220711 21:50:34.899" endtime="20220711 21:50:35.045"></status>
 </kw>
-<doc>ทดสอบระบบ sign up counter service กรณีลูกค้าทำรายการสำเร็จ</doc>
-<status status="PASS" starttime="20220705 09:49:56.865" endtime="20220705 09:50:05.413" critical="yes"></status>
+<status status="PASS" starttime="20220711 21:50:34.899" endtime="20220711 21:50:35.045"></status>
+</kw>
+<doc>ทดสอบระบบ api-check eligible bio กรณีตั้งรับ ial2.3 ลูกค้ามี ial=2.3 แต่หน้าของลูกค้าเกิด temporary lock</doc>
+<tags>
+<tag>Last_Versions</tag>
+</tags>
+<status status="PASS" starttime="20220711 21:50:30.753" endtime="20220711 21:50:35.045" critical="yes"></status>
 </test>
-<kw name="Log To Console" library="BuiltIn" type="teardown">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>${TRANS_ID}</arg>
-</arguments>
-<status status="PASS" starttime="20220705 09:50:05.414" endtime="20220705 09:50:05.414"></status>
-</kw>
-<status status="PASS" starttime="20220705 09:49:55.296" endtime="20220705 09:50:05.414"></status>
+<status status="PASS" starttime="20220711 21:50:30.014" endtime="20220711 21:50:35.046"></status>
 </suite>
 <statistics>
 <total>
@@ -857,9 +377,10 @@ java -jar tcrb-ekyc-partner-1.8.jar CSERV encrypt input_data.txt preprod file fi
 <stat pass="1" fail="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0">Last_Versions</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="23.Counter service">23.Counter service</stat>
+<stat pass="1" fail="0" id="s1" name="18.Api-Integrate-Mobile">18.Api-Integrate-Mobile</stat>
 </suite>
 </statistics>
 <errors>

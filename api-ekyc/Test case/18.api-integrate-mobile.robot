@@ -25,13 +25,14 @@ Resource        ../keywords/QR_code_page.robot
 Resource        ../keywords/Api-integrate-mobile_page.robot
 Resource        ../keywords/Generate_Partner_Secret_page.robot
 Resource        ../keywords/Api-integrate-mobile_page.robot
-# Suite Setup			Start Project
+Resource        ../keywords/Connect_database_page.robot
+
 Suite Setup         Generate_Partner_Secret
 
 
 ***Test Cases***
 Test_Check_Last_Version_1
-    [Tags]      Last_Versions
+    [Tags]      Regression
     [Documentation]   ทดสอบระบบ api-check eligible bio กรณีตั้งรับ ial2.3 และ ลูกค้ามี ial=2.3
     # Generate_Partner_Secret
     Api-integrate-mobile_page.Check_Last_Version         3 
@@ -82,6 +83,7 @@ Test_Check_Last_Version_8
 Test_Check_Last_Version_9
     [Documentation]   ทดสอบระบบ api-check eligible bio กรณีตั้งรับ ial2.3 ลูกค้ามี ial=2.3 แต่หน้าของลูกค้าเกิด temporary lock
     [Tags]      Last_Versions
+    Connect_database_page.Process_Set_Facial_temp_lock         1100600292875
     Run Keyword And Ignore Error                        Api-integrate-mobile_page.Check_Last_Version         11
     [Teardown]      Run Keyword And Ignore Error        save_data_excel_page.Save_Result_get_eligible_bio    11
 
@@ -99,6 +101,7 @@ Test_Check_Last_Version_10
 
 Test_Get_Last_Transaction_1
     [Documentation]   ทดสอบระบบ api-get last transaction status กรณี get data ลูกค้าไม่เคยทำ ekyc มาก่อน
+    [Tags]      Regression
     Run Keyword And Ignore Error                       Api-integrate-mobile_page.Get_Last_Transaction      3
     [Teardown]       Run Keyword And Ignore Error       save_data_excel_page.Save_Result_Get_last_Transaction      3
 
@@ -109,7 +112,8 @@ Test_Get_Last_Transaction_2
 
 Test_Get_Last_Transaction_3
     [Documentation]   ทดสอบระบบ api-get last transaction status กรณี get data ลูกค้าทำ ekyc และมี Status เป็น Success
-     Run Keyword And Ignore Error                       Api-integrate-mobile_page.Get_Last_Transaction      5
+    [Tags]      Regression
+    Run Keyword And Ignore Error                       Api-integrate-mobile_page.Get_Last_Transaction      5
     [Teardown]       Run Keyword And Ignore Error       save_data_excel_page.Save_Result_Get_last_Transaction      5
 
 Test_Get_Last_Transaction_4
@@ -128,6 +132,7 @@ Test_Get_Last_Transaction_5
 
 Test_Get_last_QR_1
     [Documentation]   ทดสอบระบบ api-Get Last QR กรณี ลูกค้าเคย Gen QR มาก่อน
+    [Tags]      Regression
     Run Keyword And Ignore Error                    Api-integrate-mobile_page.Get_Last_QR  3
     [Teardown]      Run Keyword And Ignore Error    save_data_excel_page.Save_Result_Get_last_QR  3
 
