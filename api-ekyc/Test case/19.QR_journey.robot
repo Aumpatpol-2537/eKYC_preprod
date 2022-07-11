@@ -23,8 +23,6 @@ Resource        ../keywords/QR_code_page.robot
 Resource        ../keywords/Generate_Partner_Secret_page.robot
 
 Resource		../Main/Main.robot
-# Suite Setup			Start Project
-# Suite Teardown		Stop Project
 Suite Setup         Generate_Partner_Secret
 Suite Teardown      Log to console   ${TRANS_ID}
 
