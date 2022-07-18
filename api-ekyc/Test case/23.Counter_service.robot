@@ -37,8 +37,8 @@ Sign_up_Counter_Service_1
     [Documentation]     ทดสอบระบบ sign up counter service กรณีลูกค้าทำรายการสำเร็จ
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Counter_service_page.Validate_Sign_up_CS                                3
-    Counter_service_page.Confirmation_Sign_up_CS
-    [Teardown]      save_data_excel_page.Save_Result_Counter_Service        3
+    # Counter_service_page.Confirmation_Sign_up_CS
+    # [Teardown]      save_data_excel_page.Save_Result_Counter_Service        3
 
 
 Sign_up_Counter_Service_2

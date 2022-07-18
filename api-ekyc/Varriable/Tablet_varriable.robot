@@ -53,7 +53,7 @@ ${LOCATION}                         QA_HOME
 &{HEADER_FACIAL_AUTHEN}               X-Correlation-Id=${CORRELATION}            #Content-Type=application/json
 ...                            partner-code=TCMB       partner-secret=ewxwnjcssh      x-apigw-api-id=${X-API}      #user=${USER_HEADER}  
 
-&{HEADER_COUNTER_SERVICE}               X-Correlation-Id=${CORRELATION}            Content-Type=application/json
+&{HEADER_COUNTER_SERVICE}               X-Correlation-Id=${CORRELATION}            Content-Type=application/json        client-ip=${IP}          location=${LOCATION}
 ...                            partner-code=CSERV       partner-secret=xxxxx      x-apigw-api-id=${X-API}      #user=${USER_HEADER}  
 
 &{HEADER_PLATFORM_KYC}          X-Correlation-Id=${CORRELATION}            client-ip=${IP}          location=${LOCATION}

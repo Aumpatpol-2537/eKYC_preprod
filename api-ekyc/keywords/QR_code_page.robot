@@ -6,6 +6,8 @@ Resource            ../Keywords/Encrypt_page.robot
 
 ***Variables***
 ${CID_AUM}        0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=
+${JARR}           CBWV7Pg6oX2yNgXJtLZA4N85SOMl97bQuVBw9xwHlbVu72xl83HP2nw=  
+${PEPSI}          RUS0MomB2ZFe3987on5tJxanyfYFz3wF8TiATNfUBW85Wtv3HgdXtd8=
 
 ***Keywords***
 Generate_QR_Code
@@ -52,8 +54,8 @@ Validate_QR_Code
 
     Get_data_excel.Get_data_Validate_QRCODE            ${row_validate_qrcode}            ${excel_sheet}
 
-    Set To Dictionary       ${HEADER_CS_VALIDATE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_CS_VALIDATE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
     Create_File_Keep_Text                   { "qr": "${GET_QR_STRING}", "latitude": "13.8694526", "longitude": "100.7180486", "agent_id": "ekyc003", "agent_name": "TB0003 ", "device_name": "SM-P585Y/samsung", "device_ip": "192.168.2.42", "imei": "abc" }
@@ -63,7 +65,7 @@ Validate_QR_Code
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
 
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_VALIDATE_QRCODE}   headers=&{HEADER_CS_VALIDATE}    json=${body}      expected_status=anything
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_VALIDATE_QRCODE}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     Set global variable                     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
     Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
     ${convert_result}               Convert String to JSON	          ${OUTPUT_VALUE_FROM_ENCRYPT}	
@@ -126,9 +128,7 @@ Generate_QR_Code_for_test_qrstamp_scene
     Set To Dictionary       ${HEADER_GEN_QR}      partner-secret=${GET_PARTNER_SECRET}
 
     Create Session          alias=${ALIAS}    url=${BOT_CORE_SERVICE}
-    # &{body}=        Create dictionary       cid=6RMiea2qlgsunn3CSoZsQWQJeGOT/MQCSPwLMavI3y3zqpR6fUVmmGk=    twin_status=     twins_gender=   journey_code=JN003       ###น้องจ๋า
-    &{body}=        Create dictionary       cid=${CID_AUM}      twins_status=     twins_gender=   journey_code=JN003         consent_onetrust_version=            consent_internal_version=
-    # &{body}=        Create dictionary       cid=IfCWHF4jPgvVSzFOK4qIEfPMTbn3YYPLVo6EF4fgba0sl4Uk2OPmtUE=      twin_status=     twins_gender=   journey_code=JN003         ###พี่pepsi
+    &{body}=        Create dictionary       cid=${PEPSI}      twins_status=     twins_gender=   journey_code=JN003         consent_onetrust_version=            consent_internal_version=
     ${response}=    POST On Session     alias=${ALIAS}     url=${URI_GEN_QRCODE}     headers=&{HEADER_GEN_QR}      json=${body}    expected_status=anything
 
     Set global variable             ${RESPONSE_CODE}                                  ${response.json()["status"]["code"]}             
@@ -159,8 +159,8 @@ Generate_QR_Code_for_test_qrstamp_scene_2
 
 
 Validate_QR_Code_for_test_qrstamp_scene
-    Set To Dictionary       ${HEADER_CS_VALIDATE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_CS_VALIDATE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
     Create_File_Keep_Text                   { "qr": "${QR_VALUE}", "latitude": "13.8694526", "longitude": "100.7180486", "agent_id": "ekyc003", "agent_name": "TB0003 ", "device_name": "SM-P585Y/samsung", "device_ip": "192.168.2.42", "imei": "abc" }
@@ -170,7 +170,7 @@ Validate_QR_Code_for_test_qrstamp_scene
 
     &{body}=      Create dictionary        data=${RESULT_ENCRYPT_DATA}
 
-    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_VALIDATE_QRCODE}   headers=&{HEADER_CS_VALIDATE}    json=${body}      expected_status=anything
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_VALIDATE_QRCODE}   headers=&{HEADER_PLATFORM_KYC}    json=${body}      expected_status=anything
     Set global variable                     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
     Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
     ${convert_result}               Convert String to JSON	          ${OUTPUT_VALUE_FROM_ENCRYPT}	
