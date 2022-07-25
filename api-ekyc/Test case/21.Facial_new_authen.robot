@@ -12,7 +12,6 @@ Resource		../keywords/save_data_excel_page.robot
 Resource		../Varriable/img.robot
 Resource		../keywords/Save_LN_FR_Page.robot
 Resource		../keywords/LivenessAPI_page.robot
-# Resource		../Varriable/api_varriable.robot
 Resource		../Varriable/Tablet_varriable.robot
 Resource        ../keywords/Save_IAL_Level.robot
 Resource        ../keywords/IAL_Page.robot
@@ -24,6 +23,7 @@ Resource		../Main/Main.robot
 Resource        ../keywords/Facial_authen_page.robot
 Resource        ../keywords/Generate_Partner_Secret_page.robot
 Resource        ../keywords/Facial_lock_page.robot
+Resource        ../keywords/Connect_database_page.robot
 
 Suite Setup         Generate_Partner_Secret
 
@@ -35,18 +35,12 @@ Facial_authen_01
     [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen              3
 
 Facial_authen_02
-    [Documentation]        ทดสอบระบบ Facial authen กรณีถ่ายภาพ Liveness fail จำนวน 9 ครั้ง และผ่านในครั้งสุดท้าย ครั้งที่ 10
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
-    Run Keyword And Ignore Error         Facial_authen_page.Mobile_Facial_authen            4  
-    [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen              4
+    [Tags]          Regression
+    [Documentation]        ทดสอบระบบ Facial authen กรณีถ่ายภาพ Liveness fail จำนวน x ครั้ง และผ่านในครั้งสุดท้าย ครั้งที่ x
+    Run Keyword And Ignore Error                                Facial_authen_page.Liveness_fail_authen            4
+    Connect_database_page.Check_facial_temp_lock                 1100600292875
+    # Run Keyword And Ignore Error         Facial_authen_page.Liveness_fail_authen            4
+    # [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen              4
 
 Facial_authen_03
     [Documentation]        ทดสอบระบบ Facial authen กรณีถ่ายภาพ Liveness fail จำนวน 10 ครั้ง และทำไม่ผ่านเลย จนครั้งที่ 10
@@ -81,7 +75,8 @@ Facial_authen_06
     Run Keyword And Ignore Error        Facial_authen_page.Facial_fail_authen           8
     Run Keyword And Ignore Error        Facial_authen_page.Facial_fail_authen           8
     Run Keyword And Ignore Error        Facial_authen_page.Facial_fail_authen           8
-    [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen              8
+    Connect_database_page.Check_facial_permananceLock_lock           1100600292875           
+    # [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen              8
 
 Facial_authen_07
     [Documentation]        ทดสอบระบบ Facial authen กรณี ส่ง cid  ที่ไม่มีอยู่ในระบบ ekyc มา
@@ -116,3 +111,23 @@ Facial_authen_18
     Check_DOPA_API_page.Check_DOPA          
     LivenessAPI_page.Liveness_and_FR_Pass
     [Teardown]     Run Keyword And Ignore Error         save_data_excel_page.Save_Result_Facial_authen             20
+
+
+test_facail_authen
+    Facial_authen_page.Liveness_fail_authen         10
+    [Teardown]      Check_facial_temp_lock          1100600292875
+
+
+Facial_authen_19
+    [Tags]          Regression
+    [Documentation]        ทดสอบระบบ Facial authen กรณีถ่ายภาพ Liveness fail จำนวน x ครั้ง และเกิด Temp Lock
+    Run Keyword And Ignore Error                                Facial_authen_page.Liveness_fail_authen            4
+    Connect_database_page.Check_facial_temp_lock                 1100600292875
+
+Facial_authen_20
+    [Tags]          Regression
+    [Documentation]        ทดสอบระบบ Facial authen กรณีถ่ายภาพ face rec fail จำนวน x ครั้ง และเกิด permanance Lock
+    Run Keyword And Ignore Error                        Facial_authen_page.Facial_fail_authen                       4
+    Run Keyword And Ignore Error                        Facial_authen_page.Facial_fail_authen                       4
+    Run Keyword And Ignore Error                        Facial_authen_page.Facial_fail_authen                       4
+    Connect_database_page.Check_facial_permananceLock_lock          1100600292875

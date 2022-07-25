@@ -176,7 +176,7 @@ QR_Stamp_used_2
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
     Get_term_and_conditionAPI_page.Agree_term_and_conditions
-    Validate_customer_API_page.Validate_customer_pass              18
+    Validate_customer_API_page.Validate_customer_pass              4
     Check_DOPA_API_page.Check_DOPA          
     LivenessAPI_page.Liveness_and_FR_Pass
     	Check_ial_is_2_3                        ${TRANS_ID}    
@@ -204,7 +204,7 @@ QR_Stamp_used_4
 
 QR_Stamp_used_5
     [Documentation]  ทดสอบระบบ Stamp QR Used กรณีลูกค้า Gen QR code มาทำ kyc และได้สถานะเป็น Unsuccess  (ลูกค้าไม่กดรับ Term & conditions) และ กลับมาทำ KYC อีกครั้ง
-    [Tags]  QR_Stamp_Used
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
@@ -215,7 +215,7 @@ QR_Stamp_used_5
 
 QR_Stamp_used_6
     [Documentation]  ทดสอบระบบ Stamp QR Used กรณีลูกค้า Gen QR code มาทำ kyc และได้สถานะเป็น Unsuccess  (Validate Customer Fail Dip chip ด้วยบัตรประชาชนผู้อื่น) และ กลับมาทำ KYC อีกครั้ง
-    [Tags]  QR_Stamp_Used
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
@@ -226,7 +226,7 @@ QR_Stamp_used_6
 
 QR_Stamp_used_7
     [Documentation]  ทดสอบระบบ Stamp QR Used กรณีลูกค้า Gen QR code มาทำ kyc และได้สถานะเป็น Unsuccess  (DOPA FAIL) และ กลับมาทำ KYC อีกครั้ง
-    [Tags]  QR_Stamp_Used
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
@@ -238,7 +238,7 @@ QR_Stamp_used_7
 
 QR_Stamp_used_8
     [Documentation]  ทดสอบระบบ Stamp QR Used กรณีลูกค้า Gen QR code มาทำ kyc และได้สถานะเป็น Unsuccess  (FACIAL FAIL) และ กลับมาทำ KYC อีกครั้ง
-    [Tags]  QR_Stamp_Used
+    [Tags]      Regression
     QR_code_page.Generate_QR_Code_for_test_qrstamp_scene
     Main.Start Project
     QR_code_page.Validate_QR_Code_for_test_qrstamp_scene

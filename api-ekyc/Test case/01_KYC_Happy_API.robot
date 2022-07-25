@@ -33,19 +33,19 @@ eKYC_Happy_Journey_Complete_Register
 	[Tags]  run
 	Generate_Transaction_page.Start_Generate_Transaction
 	Get_term_and_conditionAPI_page.Agree_term_and_conditions
-	# Validate_customer_API_page.Validate_customers			4
-	# Sent_SMS(OTP)API_page.Sent_OTP
-	# Sent_SMS(OTP)API_page.Get_OTP_Value_from_database_by_api
-	# Verify_OTP_API_page.Verify_OTP
-	# 	Get_Consent_API_page.Agree_Consent
+	Validate_customer_API_page.Validate_customers			4
+	Sent_SMS(OTP)API_page.Sent_OTP
+	Sent_SMS(OTP)API_page.Get_OTP_Value_from_database_by_api
+	Verify_OTP_API_page.Verify_OTP
+		Get_Consent_API_page.Agree_Consent
 
-	# 	twin_page.Dont_Have_Twin
-	# Check_DOPA_API_page.Check_DOPA
-    # LivenessAPI_page.Liveness_and_FR_Pass
-	# 	Save_Log_TC001_SUCCESS                                           4 
+		twin_page.Dont_Have_Twin
+	Check_DOPA_API_page.Check_DOPA
+    LivenessAPI_page.Liveness_and_FR_Pass
+		Save_Log_TC001_SUCCESS                                           4 
 
-	# Check_ial_is_2_3                        ${TRANS_ID}    
-	# [Teardown]		save_data_excel_page.Save_eKYC_Happy-01  				4
+	Check_ial_is_2_3                        ${TRANS_ID}    
+	[Teardown]		save_data_excel_page.Save_eKYC_Happy-01  				4
 
 
 Happy_002

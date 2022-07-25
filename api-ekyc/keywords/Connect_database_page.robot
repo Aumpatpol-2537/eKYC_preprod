@@ -53,6 +53,19 @@ Unlock_permanance_lock
     Execute Sql String      UPDATE image_db.customer_facial_lock SET temporary_unlock_remaining=0,permanent_lock=false WHERE cid_hash='${input_cid_hash}'
     Disconnect From Database
 
+Check_Permanance_lock
+    [Arguments]     ${input_cid_hash}           
+    Connect To Database     psycopg2     ${DBName}    ${DBUser}    ${DBPass}    ${DBHost}    ${DBPort}
+    @{queryResults_from_cs_info} =  Query    SELECT x.* FROM image_db.customer_facial_lock x WHERE x.cid_hash IN ('${input_cid_hash}') AND x.permanent_lock IN (true)
+    ${result_facial_temp_lock}          Get From List                   @{queryResults_from_cs_info}       	3
+    Should Be Equal As Strings                 ${result_facial_temp_lock}             True
+    Disconnect From Database
+
+Check_facial_permananceLock_lock
+    [Arguments]                 ${input_cid}        
+    Gen_cid_hash                ${input_cid}
+    Check_Permanance_lock             ${GET_CID_HASH}
+
 
 Process_unlock_permanance_Lock
     [Arguments]     ${cid}

@@ -34,7 +34,6 @@ Suite Setup         Generate_Partner_Secret
 Test_Check_Last_Version_1
     [Tags]      Regression
     [Documentation]   ทดสอบระบบ api-check eligible bio กรณีตั้งรับ ial2.3 และ ลูกค้ามี ial=2.3
-    # Generate_Partner_Secret
     Api-integrate-mobile_page.Check_Last_Version         3 
     [Teardown]      Run Keyword And Ignore Error        save_data_excel_page.Save_Result_get_eligible_bio    3
 

@@ -9,8 +9,8 @@ Resource    ../keywords/Validate_customer_API_page.robot
 
 *** Keywords ***
 Face_Rec_fail 
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -21,7 +21,7 @@ Face_Rec_fail
 
     ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
 
-    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     
     Set global variable             ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}
@@ -48,13 +48,13 @@ Face_Rec_fail
     # Log         ${resp.json()["status"]["remark"]}
 
 Face_Rec_fail_2  
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json      {"image_source":"${FR_LOW_SCORE}","kyc_trans_id" : "${TRANS_ID}"}  
-    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     Should Be Equal As Integers     ${resp.json()["status"]["code"]}              ${RESPONSE_CODE_FACE_MATCH_FAILED}   
     Should Be Equal                 ${resp.json()["status"]["message"]}           ${RESPONSE_MESSAGE_2011}
@@ -63,13 +63,13 @@ Face_Rec_fail_2
     Log         ${resp.json()["status"]["remark"]}
 
 Face_Rec_fail_3  
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json      {"image_source":"${FR_LOW_SCORE}","kyc_trans_id" : "${TRANS_ID}"}  
-    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     Should Be Equal As Integers     ${resp.json()["status"]["code"]}                ${RESPONSE_CODE_FACE_MATCH_FAILED}   
     Should Be Equal                 ${resp.json()["status"]["message"]}             ${RESPONSE_MESSAGE_2011}
@@ -78,8 +78,8 @@ Face_Rec_fail_3
     Log         ${resp.json()["status"]["remark"]}
 
 Face_Rec_fail_3time  
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -88,7 +88,7 @@ Face_Rec_fail_3time
     ...                                  {"image_source":"low_score","kyc_trans_id" : "${TRANS_ID}"}
     ...                                  {"image_source":"low_score","kyc_trans_id" : "${TRANS_ID}"}  
     ${body}=     To Json     ${FR_Detect_failed} 
-    ${resp}=    POST On Session          alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session          alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful         response=${resp}
     # Should Be Equal As Integers     ${resp.json()["status"]["code"]}             ${RESPONSE_CODE_REQUEST_TIMEOUT}
     # Should Be Equal                 ${resp.json()["status"]["message"]}          ${RESPONSE_MESSAGE_1004}
@@ -100,45 +100,45 @@ Face_Rec_fail_3time
     END
 
 Face_Rec_Timeout
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
     ${body}=        To Json              {"image_source":"facetimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
     Set global variable                 ${FR_RETURN_TIMEOUT}                ${resp.json()["status"]["message"]} 
 
 Face_Rec_Timeout_2
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
     ${body}=        To Json              {"image_source":"facetimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
     Set global variable                 ${FR_RETURN_TIMEOUT_2}                ${resp.json()["status"]["message"]} 
 
 Face_Rec_Timeout_3
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json              {"image_source":"facetimeout","kyc_trans_id" : "${TRANS_ID}"}     
-    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=     POST On Session         alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful        response=${resp}
     Should Be Equal As Integers         ${resp.json()["status"]["code"]}            ${RESPONSE_CODE_REQUEST_TIMEOUT}
     Should Be Equal                     ${resp.json()["status"]["message"]}         ${RESPONSE_MESSAGE_1004}
     Set global variable                 ${FR_RETURN_TIMEOUT_3}                ${resp.json()["status"]["message"]} 
 
 Face_Rec_Timeout3times
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
@@ -147,7 +147,7 @@ Face_Rec_Timeout3times
     ...                          {"image_source":"facetimeout","kyc_trans_id" : "${TRANS_ID}"}
     ...                          {"image_source":"facetimeout","kyc_trans_id" : "${TRANS_ID}"}
     ${body}=     To Json   ${FR_TimeOut} 
-    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     # Set global variable              ${RESULT_FACE_REC}             ${resp.json()["status"]["code"]}
     # Set global variable              ${RESULT_MESSAGE}          ${resp.json()["status"]["message"]}      
@@ -157,13 +157,13 @@ Face_Rec_Timeout3times
     END
 
 Face_Rec_reached_max
-    Set To Dictionary       ${HEADER_VALIDATE_IMAGE}      Authorization=${LOGIN_IDTOKEN}
-    Log                     ${HEADER_VALIDATE_IMAGE}
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
 
     Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
 
     ${body}=        To Json      {"image_source":"success","kyc_trans_id" : "${TRANS_ID}"} 
-    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_VALIDATE_IMAGE}    json=${body}
+    ${resp}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}
     Request Should Be Successful    response=${resp}
     Should Be Equal As Integers     ${resp.json()["status"]["code"]}              ${RESPONSE_CODE_FACE_MATCH_REACHED_MAX_TIME}   
     # Should Be Equal                 ${resp.json()["status"]["message"]}           ${RESPONSE_MESSAGE_2010}

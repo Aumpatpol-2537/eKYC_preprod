@@ -5,7 +5,7 @@ Resource            ../keywords/Get_data_excel.robot
 Resource            ../Keywords/Encrypt_page.robot
 
 ***Variables***
-${CID_AUM}        0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=
+${AUM}        0I8SfCnkwkptBl1Z50x6mYNe0lbdJCRxMApy/0EMeYFwu59LCQxgxs4=
 ${JARR}           CBWV7Pg6oX2yNgXJtLZA4N85SOMl97bQuVBw9xwHlbVu72xl83HP2nw=  
 ${PEPSI}          RUS0MomB2ZFe3987on5tJxanyfYFz3wF8TiATNfUBW85Wtv3HgdXtd8=
 
@@ -128,7 +128,7 @@ Generate_QR_Code_for_test_qrstamp_scene
     Set To Dictionary       ${HEADER_GEN_QR}      partner-secret=${GET_PARTNER_SECRET}
 
     Create Session          alias=${ALIAS}    url=${BOT_CORE_SERVICE}
-    &{body}=        Create dictionary       cid=${PEPSI}      twins_status=     twins_gender=   journey_code=JN003         consent_onetrust_version=            consent_internal_version=
+    &{body}=        Create dictionary       cid=${AUM}      twins_status=     twins_gender=   journey_code=JN003         consent_onetrust_version=            consent_internal_version=
     ${response}=    POST On Session     alias=${ALIAS}     url=${URI_GEN_QRCODE}     headers=&{HEADER_GEN_QR}      json=${body}    expected_status=anything
 
     Set global variable             ${RESPONSE_CODE}                                  ${response.json()["status"]["code"]}             
