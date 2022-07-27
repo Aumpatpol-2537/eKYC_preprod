@@ -297,3 +297,11 @@ Support_test_QA_preprod
     Check_ial_is_2_3                ${TRANS_ID}
 
 ### command   robot   -t    Support_test_QA_preprod   api-ekyc/Test\ case/19.QR_journey.robot 
+
+#LIST_NAME
+##  IMG_AUM / SELFIE_AUM
+##  IMG_BOAT /   SELFIE_BOAT
+##  IMG_JARR   /  SELFIE_JAR   /  row  14
+##  IMG_OIL   /   SELFIE_OIL
+##  IMG_PEPSI  /   SELFIE_PEPSI
+##  IMG_PKK  /   SELFIE_PKK
