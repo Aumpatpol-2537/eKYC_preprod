@@ -239,3 +239,23 @@ Happy_009
 	Check_ial_is_2_3                        ${TRANS_ID}    
 	[Teardown]		save_data_excel_page.Save_eKYC_Happy-01  				12
 
+semi_eKYC_happy
+	[Documentation]			ทำรายการ eKYC Happy
+	# Generate_Transaction_page.Start_Generate_Transaction
+	# Get_term_and_conditionAPI_page.Agree_term_and_conditions
+	# Validate_customer_API_page.Validate_customer_pass			4
+	# Sent_SMS(OTP)API_page.Sent_OTP
+
+
+	Set Global Variable		${TRANS_ID}					EU2022072500045
+	Set Global Variable		${VALUE_OTP}				153791
+	Set Global Variable		${OTP_REF_NUMBER}			xTVm	
+
+
+    Get_data_excel.Get_Data_Customer_MainCase           	4	
+	Verify_OTP_API_page.Verify_OTP
+	Get_Consent_API_page.Agree_Consent
+	Twin_page.Dont_Have_Twin
+	Check_DOPA_API_page.Check_DOPA
+    LivenessAPI_page.Liveness_and_FR_Pass
+	Check_ial_is_2_3                        ${TRANS_ID}    

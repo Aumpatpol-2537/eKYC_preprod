@@ -6,6 +6,7 @@ Resource            ../Varriable/varriable.robot
 Resource            ../keywords/Get_data_excel.robot
 Resource            ../Keywords/Encrypt_page.robot
 Resource		    ../Varriable/img.robot
+Resource		    ../Varriable/img_authen.robot
 Resource            ../Keywords/Get_status_error.robot
 Resource            ../keywords/Get_Consent_API_page.robot
 
@@ -363,3 +364,28 @@ Validate_customer_qr_code_BU_Journey
 	Set global variable             ${CONSENT_NEW_VERSION}        ${values_code[0]}
 
     Run Keyword If                 '${CONSENT_NEW_VERSION}' == 'True'        Get_Consent_API_page.Actions_Consent
+
+
+
+
+Validate_customer_support_test
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
+
+    Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE} 
+    [Arguments]                             ${row_in_excel}     ${img_base64}
+    Get_Data_Customer_MainCase           ${row_in_excel}
+
+    Create_File_Keep_Text             { "kyc_trans_id":"${TRANS_ID}", "alley": " ", "birth_date": "${BIRTH_DATE}", "cid":"${GET_CID}", "date_of_issue": "04-06-2559", "district": "อำเภอบางกรวย", "expired_date": "26-07-2567", "first_name_en": "${FIRST_NAME_EN}", "first_name_th": "${FIRST_NAME}", "house_no": "425", "issue_by": "พระโขนง/กรุงเทพมหานคร", "lane": " ", "last_name_en": "${SURNAME_EN}", "last_name_th": "${SURNAME}", "middle_name_en": "middle", "middle_name_th": "กลาง", "moo": " ", "province": "บางกะปิ", "request_no": 123456789, "road": "นวมินทร์", "sex": "ชาย", "sub_district": "บางสีทอง", "title_en": "Mr.", "title_th": "นาย", "img": "${${img_base64}}"}
+    Encrypt_page.Encrypt_Function_with_long_Text            keep_text.txt      
+    Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
+
+    ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
+    ${response}=    POST On Session     alias=${ALIAS}     url=${URI_POST_VALIDATE_CUSTOMER}   headers=&{HEADER_PLATFORM_KYC}    json=${body}
+    Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${response.json()["data"]}
+    Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
+    ${convert_result}             Convert String to JSON	          ${OUTPUT_VALUE_FROM_ENCRYPT}	
+
+    ${values_code}          	    Get Value From Json	              ${convert_result}	    $..consent_new_version
+	Set global variable             ${CONSENT_NEW_VERSION}        ${values_code[0]}
+    Run Keyword If                 '${CONSENT_NEW_VERSION}' == 'True'               Get_Consent_API_page.Agree_Consent

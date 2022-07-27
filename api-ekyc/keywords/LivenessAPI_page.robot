@@ -271,3 +271,30 @@ Liveness_and_FR_Pass_BU_Journey
 
 Retry_if_facial_offline
     Run Keyword If          '${FACIAL_RESPONSE_CODE}' == '1004'                Liveness_and_FR_Pass_BU_Journey
+
+
+Liveness_and_FR_Pass_support_test
+    [Arguments]         ${img_selfie}
+
+    Set To Dictionary       ${HEADER_PLATFORM_KYC}      Authorization=${LOGIN_IDTOKEN}
+    Log                     ${HEADER_PLATFORM_KYC}
+    Create Session          alias=${ALIAS}    url=${URL_CORE_SERVICE}
+
+    Create_File_Keep_Text_Facial                            {"image_source":"${${img_selfie}}","kyc_trans_id":"${TRANS_ID}"}
+    Encrypt_page.Encrypt_Function_with_long_Text            keep_facial_body.txt      
+    Encrypt_page.Read_File_Encrypt                          encrypt_text.txt        
+
+    ${body}=        To Json              {"data": "${RESULT_ENCRYPT_DATA}"}
+    ${resp}=        POST On Session      alias=${ALIAS}     url=${URI_POST_VALIDATE_IMAGE}    headers=&{HEADER_PLATFORM_KYC}    json=${body}        expected_status=anything
+    Log             ${resp.status_code}
+    Run keyword if       '${resp.status_code}' != '200'         Save_error_When_its_active          FACIAL              
+    Set global variable     ${RESPONSE_ENCRYPT_TYPE}         ${resp.json()["data"]}
+    Encrypt_page.Decrypt_Function           ${RESPONSE_ENCRYPT_TYPE}
+    ${convert_result}             Convert String to JSON	          ${OUTPUT_VALUE_FROM_ENCRYPT}	
+    ${values_code}          	  Get Value From Json	              ${convert_result}	    $..code
+	# Set global variable             ${DOPA_RESPONSE_CODE}             ${values_code[0]}
+    ${values_code}          	  Get Value From Json	              ${convert_result}	    $..message
+	Set global variable              ${MESS_STATUS}                  ${values_code[0]}
+    ${values_code}          	  Get Value From Json	              ${convert_result}	    $..message
+	Set global variable              ${LN_FR_RESPONE_MESSAGE}         ${values_code[0]}
+    

@@ -62,7 +62,7 @@ Get_Data_Customer_MainCase
     Set global variable         ${SURNAME_EN}           ${surname_en}
     Set global variable         ${BIRTH_DATE}           ${bithdate}
     # Set global variable         ${GET_CIF}              ${get_cif}
-    Set global variable         ${GET_MOBILE}           ${get_mobile}
+    Set global variable         ${MOBILE_NO}           ${get_mobile}
     Set global variable         ${GET_LASER_CODE}       ${get_lasercode}
     # Set global variable         ${GET_SEX}              ${sex}
     Close All Excel Documents

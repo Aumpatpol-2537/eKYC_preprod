@@ -284,3 +284,16 @@ Modify_Validate_customer_2
     [Teardown]      Run Keyword And Ignore Error        save_data_excel_page.Save_Result_Modify_validate_api        4
 
 #####################################################################################################################
+
+
+Support_test_QA_preprod
+    QR_code_page.Generate_QR_Code_for_support_test                  AUM
+    Main.Start Project
+    QR_code_page.Validate_QR_Code_for_test_qrstamp_scene
+    Get_term_and_conditionAPI_page.Agree_term_and_conditions
+    Validate_customer_API_page.Validate_customer_support_test       4        IMG_AUM    
+    Check_DOPA_API_page.Check_DOPA          
+    LivenessAPI_page.Liveness_and_FR_Pass_support_test              SELFIE_AUM
+    Check_ial_is_2_3                ${TRANS_ID}
+
+### command   robot   -t    Support_test_QA_preprod   api-ekyc/Test\ case/19.QR_journey.robot 
